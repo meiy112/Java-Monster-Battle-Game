@@ -14,8 +14,8 @@ public class Quiz {
     private int hp;
     private int level;
     private int exp;
-    private List<Monster> monsters;
-    private List<Question> questions;
+    private final List<Monster> monsters;
+    private final List<Question> questions;
 
     //EFFECT: creates a quiz with empty list of monsters and questions and default player stats
     public Quiz() {
@@ -46,10 +46,6 @@ public class Quiz {
 
     public Monster getMonster(int i) {
         return monsters.get(i);
-    }
-
-    public List<Monster> getMonsters() {
-        return monsters;
     }
 
     public List<Question> getQuestions() {
@@ -90,13 +86,9 @@ public class Quiz {
         level += levels;
         exp -= POINTS_NEEDED_TO_LEVEL_UP * levels;
     }
-    
-    //EFFECT: returns true if player hp is <= 0
+
+    //EFFECT: returns true if player hp is <= 0, otherwise false
     public boolean isGameOver() {
-        if(hp <= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return hp <= 0;
     }
 }

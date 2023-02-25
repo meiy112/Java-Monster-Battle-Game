@@ -98,29 +98,29 @@ public class QuizApp {
     //CONSTRAINT: quiz must have at least one monster added
     //EFFECT: starts the quiz game
     public static void runQuiz(Quiz quiz) {
-            int monsterNumber = 0;
-            int isNewMonster = 1;
+        int monsterNumber = 0;
+        int isNewMonster = 1;
 
-            for(Question question : quiz.getQuestions()) {
-                getDialogue(isNewMonster, quiz, monsterNumber);
-                isNewMonster = 0;
-                Scanner keyboardInput = new Scanner(System.in);
-                System.out.println("Answer the following question: " + question.getPrompt());
-                String answer = keyboardInput.nextLine();
+        for (Question question : quiz.getQuestions()) {
+            getDialogue(isNewMonster, quiz, monsterNumber);
+            isNewMonster = 0;
+            Scanner keyboardInput = new Scanner(System.in);
+            System.out.println("Answer the following question: " + question.getPrompt());
+            String answer = keyboardInput.nextLine();
 
-                evaluateQuizAnswer(answer, question, quiz, monsterNumber);
-                checkIfLevelUp(quiz);
+            evaluateQuizAnswer(answer, question, quiz, monsterNumber);
+            checkIfLevelUp(quiz);
 
-                if(quiz.getMonster(monsterNumber).isDefeated()) {
-                    monsterNumber++;
-                    isNewMonster = 1;
-                }
-                if(quiz.isGameOver()) {
-                    System.out.println("You've lost all your health. Game over!");
-                    break;
-                }
-                System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
+            if (quiz.getMonster(monsterNumber).isDefeated()) {
+                monsterNumber++;
+                isNewMonster = 1;
             }
+            if (quiz.isGameOver()) {
+                System.out.println("You've lost all your health. Game over!");
+                break;
+            }
+            System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
+        }
 
         System.out.println("You've defeated " + quiz.getScore() +
                 " monsters and gotten to level " + quiz.getLevel() + "!");
@@ -136,9 +136,9 @@ public class QuizApp {
 
     //EFFECT: compares inputted answer to the question's correct answer
     public static void evaluateQuizAnswer(String answer, Question question, Quiz quiz, int monsterNumber) {
-        if(answer.equals(question.getAnswer())) {
+        if (answer.equals(question.getAnswer())) {
             quiz.getMonster(monsterNumber).attackMonster();
-            if(quiz.getMonster(monsterNumber).isDefeated()) {
+            if (quiz.getMonster(monsterNumber).isDefeated()) {
                 quiz.defeatMonster(quiz.getMonster(monsterNumber));
                 System.out.println("You've defeated the monster!");
             } else {
@@ -153,7 +153,7 @@ public class QuizApp {
     //MODIFIES: quiz
     //EFFECT: increases quiz level by one if it has enough points
     public static void checkIfLevelUp(Quiz quiz) {
-        if(quiz.getExp() >= POINTS_NEEDED_TO_LEVEL_UP) {
+        if (quiz.getExp() >= POINTS_NEEDED_TO_LEVEL_UP) {
             quiz.levelUp();
             System.out.println("You've leveled up!");
         }

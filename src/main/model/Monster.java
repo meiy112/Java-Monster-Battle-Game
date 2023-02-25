@@ -6,7 +6,7 @@ public class Monster {
     public static String mediumMonsterDialogue = "a moderate sized monster appeared!";
     public static String largeMonsterDialogue = "uh-oh... a large monster appeared!";
 
-    private int size;
+    private final int size;
     private int hp;
     private String dialogue;
 
@@ -38,11 +38,7 @@ public class Monster {
 
     //EFFECT: return true if monster hp <= 0, otherwise return false
     public boolean isDefeated() {
-        if(hp <= 0) {
-            return true;
-        } else{
-            return false;
-        }
+        return hp <= 0;
     }
 
     //CONSTRAINT: monster must have hp >= 0

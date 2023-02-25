@@ -15,7 +15,7 @@ really enjoyed the first year computer science courses I've taken at UBC as well
 these two interests in my personal project. 
 
 ## User Stories
-- As a user, I want to be able to add or choose an arbitrary number of personalized questions into a quiz instance to 
+- As a user, I want to be able to add an arbitrary number of personalized questions into a quiz instance to 
 practice on.
 - As a user, I want to be able to study in a fun way. 
 - As a user, I want to be able to learn when I am bored. 
