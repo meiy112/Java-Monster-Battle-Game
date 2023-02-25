@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class QuestionTest {
     Question question;
@@ -15,8 +16,8 @@ public class QuestionTest {
 
     @Test
     void testQuestion() {
-        assertEquals(null, question.getAnswer());
-        assertEquals(null, question.getPrompt());
+        assertNull(question.getAnswer());
+        assertNull(question.getPrompt());
         question.setAnswer("a");
         question.setPrompt("p");
         assertEquals("a", question.getAnswer());

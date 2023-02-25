@@ -2,9 +2,8 @@
 
 **Project Proposal:**
 
-- My project is in the form of a game where the user answers multiple choice questions to fight monsters. The
-questions will be based off of the general knowledge learnt in some of the first year computer science courses at
-UBC, such as *CPSC110* and *CPSC121*. Questions will pop up on the screen and when answered correctly, will attack the 
+- My project is in the form of a game where the user answers multiple choice questions to fight monsters. The user will 
+be able to choose between . Questions will pop up on the screen and when answered correctly, will attack the 
 monster. When a monster is defeated, the user gains exp that helps them level up to keep track of their progress 
 and moves onto another monster with a different set of questions. The user will be able to add their own questions
 to make their own quiz instance or choose from a default set.

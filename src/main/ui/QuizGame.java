@@ -13,8 +13,8 @@ public class QuizGame {
 
     //EFFECT: runs the game menu
     public static void playGame(Quiz quiz) {
-        System.out.println("Enter 'start' to play the game or 'add' to add a new monster to the quiz. \nThe " +
-                "quiz currently has " + quiz.getQuestions().size() + " questions.");
+        System.out.println("Enter 'start' to play the game or 'add' to add a new monster to the quiz. \nThe "
+                + "quiz currently has " + quiz.getQuestions().size() + " questions.");
         Scanner keyboardInput = new Scanner(System.in);
         String input = keyboardInput.nextLine();
         if (Objects.equals(input, "start")) {
@@ -110,7 +110,6 @@ public class QuizGame {
 
             evaluateQuizAnswer(answer, question, quiz, monsterNumber);
             checkIfLevelUp(quiz);
-
             if (quiz.getMonster(monsterNumber).isDefeated()) {
                 monsterNumber++;
                 isNewMonster = 1;
@@ -121,9 +120,8 @@ public class QuizGame {
             }
             System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
         }
-
-        System.out.println("You've defeated " + quiz.getScore() +
-                " monsters and gotten to level " + quiz.getLevel() + "!");
+        System.out.println("You've defeated " + quiz.getScore()
+                + " monsters and gotten to level " + quiz.getLevel() + "!");
     }
 
     //CONSTRAINT: isNewMonster must be either 1 or 0
