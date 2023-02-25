@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class Monster {
 
     public static String smallMonsterDialogue = "a small monster appeared!";
@@ -10,36 +8,35 @@ public class Monster {
 
     private int size;
     private int hp;
+    private String dialogue;
 
     // CONSTRAINT: 0 < size < 4
+    // EFFECT: creates monster with given size and assigns dialogue and hp depending on size
     public Monster(int size) {
         this.size = size;
 
         if (size == 1) {
             this.hp = 1;
+            this.dialogue = smallMonsterDialogue;
         } else if (size == 2) {
             this.hp = 2;
+            this.dialogue = mediumMonsterDialogue;
         } else if (size == 3) {
             this.hp = 3;
+            this.dialogue = largeMonsterDialogue;
         }
     }
 
+    // getters
     public String getMonsterDialogue() {
-        if(size == 1) {
-            return smallMonsterDialogue;
-        } else if(size == 2) {
-            return mediumMonsterDialogue;
-        } else if (size == 3) {
-            return largeMonsterDialogue;
-        } else {
-            return "this monster has an invalid size!";
-        }
+        return dialogue;
     }
 
     public int getMonsterExp() {
         return size;
     }
 
+    //EFFECT: return true if monster hp <= 0, otherwise return false
     public boolean isDefeated() {
         if(hp <= 0) {
             return true;
@@ -48,10 +45,11 @@ public class Monster {
         }
     }
 
-    public void takeDamage() {
+    //CONSTRAINT: monster must have hp >= 0
+    //MODIFIES: this
+    public void attackMonster() {
         hp -= 1;
     }
-
 
 
 }

@@ -1,32 +1,35 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
     public static int INITIAL_SCORE = 0;
-    public static int INITIAL_LIFE = 3;
+    public static int INITIAL_hp = 3;
     public static int INITIAL_LEVEL = 1;
     public static int INITIAL_LEVEL_UP_POINTS = 0;
     public static int POINTS_NEEDED_TO_LEVEL_UP = 3;
 
     private int score;
-    private int life;
+    private int hp;
     private int level;
     private int exp;
     private List<Monster> monsters;
     private List<Question> questions;
 
-    public Quiz(List<Monster> monsters, List<Question> questions) {
+    //EFFECT: creates a quiz with empty list of monsters and questions and default player stats
+    public Quiz() {
         this.score = INITIAL_SCORE;
-        this.life = INITIAL_LIFE;
+        this.hp = INITIAL_hp;
         this.level = INITIAL_LEVEL;
         this.exp = INITIAL_LEVEL_UP_POINTS;
-        this.monsters = monsters;
-        this.questions = questions;
+        this.monsters = new ArrayList<>();
+        this.questions = new ArrayList<>();
     }
 
-    public int getLife() {
-        return life;
+    // getters
+    public int getHp() {
+        return hp;
     }
 
     public int getScore() {
@@ -45,35 +48,52 @@ public class Quiz {
         return monsters.get(i);
     }
 
+    public List<Monster> getMonsters() {
+        return monsters;
+    }
+
     public List<Question> getQuestions() {
         return questions;
     }
 
-    public int getQuizLength() {
-        return questions.size();
+
+    //MODIFIES: this
+    //EFFECT: adds question to list of questions
+    public void addQuestion(Question question) {
+        questions.add(question);
     }
 
+    //MODIFIES: this
+    //EFFECT: adds monster to list of monsters
+    public void addMonster(Monster monster) {
+        monsters.add(monster);
+    }
+
+    //CONSTRAINT: monster must have hp <= 0
+    //MODIFIES: this
+    //EFFECT: increases score by 1 and increases exp based on the size of monster
     public void defeatMonster(Monster monster) {
         score++;
         exp += monster.getMonsterExp();
     }
 
-    public void attackMonster(Monster monster) {
-        monster.takeDamage();
+    //MODIFIES: this
+    //EFFECT: decreases hp by 1
+    public void decreaseHpByOne() {
+        hp--;
     }
 
-    public void decreaseLifeByOne() {
-        life--;
-    }
-
+    //MODIFIES: this
+    //EFFECT: increases level by using up player's exp
     public void levelUp() {
         int levels = exp / POINTS_NEEDED_TO_LEVEL_UP;
         level += levels;
         exp -= POINTS_NEEDED_TO_LEVEL_UP * levels;
     }
     
+    //EFFECT: returns true if player hp is <= 0
     public boolean isGameOver() {
-        if(life <= 0) {
+        if(hp <= 0) {
             return true;
         } else {
             return false;
