@@ -4,7 +4,7 @@ public class Monster {
 
     private final int size;
     private int hp;
-    private String dialogue;
+    private final String dialogue;
 
     // CONSTRAINT: 0 < size < 4
     // EFFECT: creates monster with given size and assigns dialogue and hp depending on size
@@ -20,6 +20,9 @@ public class Monster {
         } else if (size == 3) {
             this.hp = 3;
             this.dialogue = "uh-oh... a large monster appeared!";
+        } else {
+            hp = 0;
+            this.dialogue = null;
         }
     }
 

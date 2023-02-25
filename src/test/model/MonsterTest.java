@@ -10,12 +10,14 @@ public class MonsterTest {
     Monster smallMonster;
     Monster mediumMonster;
     Monster largeMonster;
+    Monster nullMonster;
 
     @BeforeEach
     void runBefore() {
         smallMonster = new Monster(1);
         mediumMonster = new Monster(2);
         largeMonster = new Monster(3);
+        nullMonster = new Monster(0);
     }
 
     @Test
@@ -34,6 +36,11 @@ public class MonsterTest {
         assertEquals(3, largeMonster.getMonsterSize());
         assertEquals(3, largeMonster.getMonsterExp());
         assertEquals("uh-oh... a large monster appeared!", largeMonster.getMonsterDialogue());
+
+        assertEquals(0, nullMonster.getMonsterHp());
+        assertEquals(0, nullMonster.getMonsterSize());
+        assertEquals(0, nullMonster.getMonsterExp());
+        assertNull(nullMonster.getMonsterDialogue());
     }
 
     @Test
