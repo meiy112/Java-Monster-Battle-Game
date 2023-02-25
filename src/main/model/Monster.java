@@ -2,10 +2,6 @@ package model;
 
 public class Monster {
 
-    public static String SMALL_MONSTER_DIALOGUE = "a small monster appeared!";
-    public static String MEDIUM_MONSTER_DIALOGUE = "a moderate sized monster appeared!";
-    public static String LARGE_MONSTER_DIALOGUE = "uh-oh... a large monster appeared!";
-
     private final int size;
     private int hp;
     private String dialogue;
@@ -17,13 +13,13 @@ public class Monster {
 
         if (size == 1) {
             this.hp = 1;
-            this.dialogue = SMALL_MONSTER_DIALOGUE;
+            this.dialogue = "a small monster appeared!";
         } else if (size == 2) {
             this.hp = 2;
-            this.dialogue = MEDIUM_MONSTER_DIALOGUE;
+            this.dialogue = "a moderate sized monster appeared!";
         } else if (size == 3) {
             this.hp = 3;
-            this.dialogue = LARGE_MONSTER_DIALOGUE;
+            this.dialogue = "uh-oh... a large monster appeared!";
         }
     }
 

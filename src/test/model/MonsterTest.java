@@ -3,7 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static model.Monster.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MonsterTest {
@@ -23,15 +22,15 @@ public class MonsterTest {
     void testConstructor() {
         assertEquals(1, smallMonster.getMonsterHp());
         assertEquals(1, smallMonster.getMonsterExp());
-        assertEquals(SMALL_MONSTER_DIALOGUE, smallMonster.getMonsterDialogue());
+        assertEquals("a small monster appeared!", smallMonster.getMonsterDialogue());
 
         assertEquals(2, mediumMonster.getMonsterHp());
         assertEquals(2, mediumMonster.getMonsterExp());
-        assertEquals(MEDIUM_MONSTER_DIALOGUE, mediumMonster.getMonsterDialogue());
+        assertEquals("a moderate sized monster appeared!", mediumMonster.getMonsterDialogue());
 
         assertEquals(3, largeMonster.getMonsterHp());
         assertEquals(3, largeMonster.getMonsterExp());
-        assertEquals(LARGE_MONSTER_DIALOGUE, largeMonster.getMonsterDialogue());
+        assertEquals("uh-oh... a large monster appeared!", largeMonster.getMonsterDialogue());
     }
 
     @Test

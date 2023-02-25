@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
-    public static int INITIAL_SCORE = 0;
-    public static int INITIAL_HP = 3;
-    public static int INITIAL_LEVEL = 1;
-    public static int INITIAL_EXP = 0;
-    public static int EXP_NEEDED_TO_LEVEL_UP = 3;
+    private static int INITIAL_SCORE = 0;
+    private static int INITIAL_HP = 3;
+    private static int INITIAL_LEVEL = 1;
+    private static int INITIAL_EXP = 0;
+    private static int EXP_NEEDED_TO_LEVEL_UP = 3;
 
     private int score;
     private int hp;

@@ -7,9 +7,9 @@ import model.Quiz;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static model.Quiz.*;
-
 public class QuizGame {
+
+    private static int EXP_NEEDED_TO_LEVEL_UP = 3;
 
     //EFFECT: runs the game menu
     public static void playGame(Quiz quiz) {

@@ -3,7 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static model.Quiz.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QuizTest {
@@ -25,10 +24,10 @@ public class QuizTest {
 
     @Test
     void testConstructor() {
-        assertEquals(INITIAL_SCORE, quiz.getScore());
-        assertEquals(INITIAL_HP, quiz.getHp());
-        assertEquals(INITIAL_LEVEL, quiz.getLevel());
-        assertEquals(INITIAL_EXP, quiz.getScore());
+        assertEquals(0, quiz.getScore());
+        assertEquals(3, quiz.getHp());
+        assertEquals(1, quiz.getLevel());
+        assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getMonsters().size());
         assertEquals(0, quiz.getQuestions().size());
     }
