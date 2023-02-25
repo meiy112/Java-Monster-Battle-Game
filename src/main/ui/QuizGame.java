@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import static model.Quiz.*;
 
-public class QuizApp {
+public class QuizGame {
 
     //EFFECT: runs the game menu
     public static void playGame(Quiz quiz) {
@@ -153,9 +153,9 @@ public class QuizApp {
     //MODIFIES: quiz
     //EFFECT: increases quiz level by one if it has enough points
     public static void checkIfLevelUp(Quiz quiz) {
-        if (quiz.getExp() >= POINTS_NEEDED_TO_LEVEL_UP) {
+        if (quiz.getExp() >= EXP_NEEDED_TO_LEVEL_UP) {
             quiz.levelUp();
-            System.out.println("You've leveled up!");
+            System.out.println("You've leveled up to level " + quiz.getLevel() + " !");
         }
     }
 }

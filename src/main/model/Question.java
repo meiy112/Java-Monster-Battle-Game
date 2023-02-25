@@ -1,8 +1,8 @@
 package model;
 
 public class Question {
-    public String prompt;
-    public String answer;
+    private String prompt;
+    private String answer;
 
     //EFFECT: creates question with null prompt and answer
     public Question() {

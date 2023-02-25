@@ -4,7 +4,7 @@ package ui;
 import model.Quiz;
 
 
-import static ui.QuizApp.playGame;
+import static ui.QuizGame.playGame;
 
 
 public class Main {
@@ -12,5 +12,4 @@ public class Main {
         Quiz quiz = new Quiz();
         playGame(quiz);
     }
-
 }
