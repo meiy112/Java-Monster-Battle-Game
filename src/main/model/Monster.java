@@ -32,6 +32,10 @@ public class Monster {
         return size;
     }
 
+    public int getMonsterSize() {
+        return size;
+    }
+
     public int getMonsterHp() {
         return hp;
     }

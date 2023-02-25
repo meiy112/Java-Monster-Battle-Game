@@ -53,15 +53,19 @@ public class QuizTest {
         assertEquals(0, quiz.getMonsters().size());
         quiz.addMonster(smallMonster);
         assertEquals(1, quiz.getMonsters().size());
+        assertEquals(smallMonster, quiz.getMonster(0));
     }
 
     @Test
     void testAddMultipleMonsters() {
         assertEquals(0, quiz.getMonsters().size());
         quiz.addMonster(smallMonster);
-        quiz.addMonster(smallMonster);
-        quiz.addMonster(smallMonster);
+        quiz.addMonster(mediumMonster);
+        quiz.addMonster(largeMonster);
         assertEquals(3, quiz.getMonsters().size());
+        assertEquals(smallMonster, quiz.getMonster(0));
+        assertEquals(mediumMonster, quiz.getMonster(1));
+        assertEquals(largeMonster, quiz.getMonster(2));
     }
 
     @Test

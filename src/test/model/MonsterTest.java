@@ -21,14 +21,17 @@ public class MonsterTest {
     @Test
     void testConstructor() {
         assertEquals(1, smallMonster.getMonsterHp());
+        assertEquals(1, smallMonster.getMonsterSize());
         assertEquals(1, smallMonster.getMonsterExp());
         assertEquals("a small monster appeared!", smallMonster.getMonsterDialogue());
 
         assertEquals(2, mediumMonster.getMonsterHp());
+        assertEquals(2, mediumMonster.getMonsterSize());
         assertEquals(2, mediumMonster.getMonsterExp());
         assertEquals("a moderate sized monster appeared!", mediumMonster.getMonsterDialogue());
 
         assertEquals(3, largeMonster.getMonsterHp());
+        assertEquals(3, largeMonster.getMonsterSize());
         assertEquals(3, largeMonster.getMonsterExp());
         assertEquals("uh-oh... a large monster appeared!", largeMonster.getMonsterDialogue());
     }
