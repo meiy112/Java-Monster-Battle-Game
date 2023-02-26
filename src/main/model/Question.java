@@ -1,5 +1,6 @@
 package model;
 
+//represents a question with a prompt and answer
 public class Question {
     private String prompt;
     private String answer;

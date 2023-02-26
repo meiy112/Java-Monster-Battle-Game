@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+//represents a quiz that keeps track of the player's score, hp, level, exp, and has a list of monsters and questions
 public class Quiz {
     private static int INITIAL_SCORE = 0;
     private static int INITIAL_HP = 3;

@@ -1,5 +1,6 @@
 package model;
 
+// represents monster that the player fights having hp, size, and a dialogue
 public class Monster {
 
     private final int size;
