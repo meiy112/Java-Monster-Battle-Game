@@ -7,6 +7,7 @@ import model.Quiz;
 import java.util.Objects;
 import java.util.Scanner;
 
+//quiz game application
 public class QuizGame {
 
     private static int EXP_NEEDED_TO_LEVEL_UP = 3;
@@ -48,7 +49,7 @@ public class QuizGame {
         }
     }
 
-    //MODIFIES: quiz
+    //MODIFIES: this
     //EFFECT: prompts player to add small monster to quiz
     public static void addSmallMonster(Quiz quiz) {
         Monster smallMonster = new Monster(1);
@@ -57,7 +58,7 @@ public class QuizGame {
         addOneQuestion(quiz);
     }
 
-    //MODIFIES: quiz
+    //MODIFIES: this
     //EFFECT: prompts player to add medium monster to quiz
     public static void addMediumMonster(Quiz quiz) {
         Monster mediumMonster = new Monster(2);
@@ -67,7 +68,7 @@ public class QuizGame {
         addOneQuestion(quiz);
     }
 
-    //MODIFIES: quiz
+    //MODIFIES: this
     //EFFECT: prompts player to add large monster to quiz
     public static void addLargeMonster(Quiz quiz) {
         Monster largeMonster = new Monster(3);
@@ -78,8 +79,8 @@ public class QuizGame {
         addOneQuestion(quiz);
     }
 
-    //MODIFIES: quiz
-    //EFFECT: prompts the player to input a question and answer
+    //MODIFIES: this
+    //EFFECT: prompts the player to input a question and answer and adds it to quiz
     public static void addOneQuestion(Quiz quiz) {
         Question question = new Question();
         Scanner keyboardInput = new Scanner(System.in);
@@ -96,7 +97,8 @@ public class QuizGame {
     }
 
     //CONSTRAINT: quiz must have at least one monster added
-    //EFFECT: starts the quiz game
+    //MODIFIES: this
+    //EFFECT: starts the quiz game, updating player stats along the way
     public static void runQuiz(Quiz quiz) {
         int monsterNumber = 0;
         int isNewMonster = 1;
@@ -148,7 +150,7 @@ public class QuizGame {
         }
     }
 
-    //MODIFIES: quiz
+    //MODIFIES: this
     //EFFECT: increases quiz level by one if it has enough points
     public static void checkIfLevelUp(Quiz quiz) {
         if (quiz.getExp() >= EXP_NEEDED_TO_LEVEL_UP) {

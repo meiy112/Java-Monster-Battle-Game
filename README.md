@@ -20,5 +20,5 @@ which is why I wanted to combine these two interests and studying habits in my p
 - As a user, I want to be able to add an arbitrary number of personalized questions into a quiz to 
 practice on.
 - As a user, I want to be able to study in a fun way. 
-- As a user, I want to be able to easily make a fun quiz to quiz myself or my friends. 
+- As a user, I want to be able to easily make a fun game to quiz myself or my friends. 
 - As a user, I want to be able to refresh my knowledge in a way that involves actively recalling information.
