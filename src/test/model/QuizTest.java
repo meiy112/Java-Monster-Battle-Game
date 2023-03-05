@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class QuizTest {
 
     Quiz quiz;
-    Monster smallMonster;
-    Monster mediumMonster;
-    Monster largeMonster;
+    Enemy smallMonster;
+    Enemy mediumMonster;
+    Enemy largeMonster;
     Question question1;
 
     @BeforeEach
     void runBefore() {
         quiz = new Quiz();
-        smallMonster = new Monster(1);
-        mediumMonster = new Monster(2);
-        largeMonster = new Monster(3);
+        smallMonster = new Enemy(1);
+        mediumMonster = new Enemy(2);
+        largeMonster = new Enemy(3);
         question1 = new Question();
     }
 

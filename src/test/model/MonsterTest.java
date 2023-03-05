@@ -7,17 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MonsterTest {
     
-    Monster smallMonster;
-    Monster mediumMonster;
-    Monster largeMonster;
-    Monster nullMonster;
+    Enemy smallMonster;
+    Enemy mediumMonster;
+    Enemy largeMonster;
+    Enemy nullMonster;
 
     @BeforeEach
     void runBefore() {
-        smallMonster = new Monster(1);
-        mediumMonster = new Monster(2);
-        largeMonster = new Monster(3);
-        nullMonster = new Monster(0);
+        smallMonster = new Enemy(1);
+        mediumMonster = new Enemy(2);
+        largeMonster = new Enemy(3);
+        nullMonster = new Enemy(0);
     }
 
     @Test

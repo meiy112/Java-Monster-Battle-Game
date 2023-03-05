@@ -17,8 +17,9 @@ of school. I also find it helpful to study by looking for ways to actively recal
 which is why I wanted to combine these two interests and studying habits in my personal project. 
 
 ## User Stories
-- As a user, I want to be able to add an arbitrary number of personalized questions into a quiz to 
-practice on.
-- As a user, I want to be able to study in a fun way. 
-- As a user, I want to be able to easily make a fun game to quiz myself or my friends. 
-- As a user, I want to be able to refresh my knowledge in a way that involves actively recalling information.
+- As a user, I want to be able to add an arbitrary number of personalized questions into a quiz.
+- As a user, I want to be able to start my quiz game.
+- As a user, I want to be able to defeat monsters by answering questions.
+- As a user, I want to be able to view, review, and edit questions in my quiz.
+- As a user, I want to be able to have the option to save my quiz after playing over it once. 
+- As a user, I want to be able to have the option to load my saved quizzes from the menu.

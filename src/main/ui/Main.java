@@ -1,15 +1,10 @@
 package ui;
 
 
-import model.Quiz;
-
-
-import static ui.QuizGame.playGame;
-
+import static ui.QuizGame.gameMenu;
 
 public class Main {
     public static void main(String[] args) {
-        Quiz quiz = new Quiz();
-        playGame(quiz);
+        gameMenu();
     }
 }

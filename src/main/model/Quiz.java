@@ -15,7 +15,7 @@ public class Quiz {
     private int hp;
     private int level;
     private int exp;
-    private final List<Monster> monsters;
+//    private final List<Monster> monsters;
     private final List<Question> questions;
 
     //EFFECT: creates a quiz with empty list of monsters and questions and default player stats
@@ -24,7 +24,7 @@ public class Quiz {
         this.hp = INITIAL_HP;
         this.level = INITIAL_LEVEL;
         this.exp = INITIAL_EXP;
-        this.monsters = new ArrayList<>();
+//        this.monsters = new ArrayList<>();
         this.questions = new ArrayList<>();
     }
 
@@ -45,13 +45,13 @@ public class Quiz {
         return exp;
     }
 
-    public Monster getMonster(int i) {
-        return monsters.get(i);
-    }
-
-    public List<Monster> getMonsters() {
-        return monsters;
-    }
+//    public Monster getMonster(int i) {
+//        return monsters.get(i);
+//    }
+//
+//    public List<Monster> getMonsters() {
+//        return monsters;
+//    }
 
     public List<Question> getQuestions() {
         return questions;
@@ -64,18 +64,18 @@ public class Quiz {
         questions.add(question);
     }
 
-    //MODIFIES: this
-    //EFFECT: adds monster to list of monsters
-    public void addMonster(Monster monster) {
-        monsters.add(monster);
-    }
+//    //MODIFIES: this
+//    //EFFECT: adds monster to list of monsters
+//    public void addMonster(Monster monster) {
+//        monsters.add(monster);
+//    }
 
     //CONSTRAINT: monster must have hp <= 0
     //MODIFIES: this
     //EFFECT: increases score by 1 and increases exp based on the size of monster
-    public void defeatMonster(Monster monster) {
+    public void defeatEnemy(Enemy enemy) {
         score++;
-        exp += monster.getMonsterExp();
+        exp += enemy.getEnemyExp();
     }
 
     //MODIFIES: this
