@@ -225,6 +225,7 @@ public class QuizGame {
 
     //CONSTRAINT: integer must be within bounds
     //EFFECT: returns randomly generated enemy
+    @SuppressWarnings("methodlength")
     public static Enemy generateEnemy(int i) {
         Enemy enemy = null;
         if (i == 0) {
