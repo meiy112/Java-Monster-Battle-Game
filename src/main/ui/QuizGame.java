@@ -34,6 +34,7 @@ public class QuizGame {
                 quizMenu();
             } else if (Objects.equals(input, "l")) {
                 loadQuiz();
+                quizMenu();
             } else if (Objects.equals(input, "q")) {
                 keepGoing = false;
             }
@@ -46,8 +47,8 @@ public class QuizGame {
         boolean keepGoing = true;
 
         while (keepGoing) {
-            System.out.println("'p' > play current quiz \n'e' > edit questions \n's' > save current quiz" +
-                    " \n'b' > back \nThe quiz currently has " + quiz.getQuestions().size() + " questions.");
+            System.out.println("'p' > play current quiz \n'e' > edit questions \n's' > save current quiz"
+                    + " \n'b' > back \nThe quiz currently has " + quiz.getQuestions().size() + " questions.");
             Scanner keyboardInput = new Scanner(System.in);
             String input = keyboardInput.nextLine();
             if (Objects.equals(input, "p")) {
@@ -91,56 +92,6 @@ public class QuizGame {
             }
         }
     }
-
-//    //EFFECT: runs the menu to add Enemies to quiz
-//    public static void addingEnemies() {
-//        System.out.println("Choose the size of the Enemy you want to add: 1, 2, or 3.");
-//        Scanner newInput = new Scanner(System.in);
-//        int sizeInput = newInput.nextInt();
-//        if (sizeInput == 1) {
-//            addSmallEnemy();
-//            quizMenu();
-//        } else if (sizeInput == 2) {
-//            addMediumEnemy();
-//            quizMenu();
-//        } else if (sizeInput == 3) {
-//            addLargeEnemy();
-//            quizMenu();
-//        } else {
-//            System.out.println("That's an invalid size!");
-//            quizMenu();
-//        }
-//    }
-
-//    //MODIFIES: this
-//    //EFFECT: prompts player to add small Enemy to quiz
-//    public static void addSmallEnemy() {
-//        Enemy smallEnemy = new Enemy(1);
-//        quiz.addEnemy(smallEnemy);
-//        System.out.println("You will need to add 1 question to the quiz.");
-//        addOneQuestion();
-//    }
-//
-//    //MODIFIES: this
-//    //EFFECT: prompts player to add medium Enemy to quiz
-//    public static void addMediumEnemy() {
-//        Enemy mediumEnemy = new Enemy(2);
-//        quiz.addEnemy(mediumEnemy);
-//        System.out.println("You will need to add 2 questions to the quiz.");
-//        addOneQuestion();
-//        addOneQuestion();
-//    }
-//
-//    //MODIFIES: this
-//    //EFFECT: prompts player to add large Enemy to quiz
-//    public static void addLargeEnemy() {
-//        Enemy largeEnemy = new Enemy(3);
-//        quiz.addEnemy(largeEnemy);
-//        System.out.println("You will need to add 3 questions to the quiz.");
-//        addOneQuestion();
-//        addOneQuestion();
-//        addOneQuestion();
-//    }
 
     //MODIFIES: this
     //EFFECT: prompts the player to input a question and answer and adds it to quiz

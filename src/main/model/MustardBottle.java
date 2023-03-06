@@ -1,6 +1,6 @@
 package model;
 
-public class MustardBottle extends Enemy{
+public class MustardBottle extends Enemy {
 
     public MustardBottle() {
         hp = 1;

@@ -1,6 +1,6 @@
 package model;
 
-public class GrimReaper extends Enemy{
+public class GrimReaper extends Enemy {
 
     public GrimReaper() {
         hp = 3;

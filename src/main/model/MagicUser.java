@@ -1,6 +1,6 @@
 package model;
 
-public class MagicUser extends Enemy{
+public class MagicUser extends Enemy {
 
     public MagicUser() {
         hp = 3;

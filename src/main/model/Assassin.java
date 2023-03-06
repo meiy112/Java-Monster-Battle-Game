@@ -1,6 +1,6 @@
 package model;
 
-public class Assassin extends Enemy{
+public class Assassin extends Enemy {
 
     public Assassin() {
         hp = 2;

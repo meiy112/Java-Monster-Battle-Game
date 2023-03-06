@@ -1,6 +1,6 @@
 package model;
 
-public class Pirate extends Enemy{
+public class Pirate extends Enemy {
 
     public Pirate() {
         hp = 3;

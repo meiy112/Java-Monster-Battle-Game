@@ -1,6 +1,6 @@
 package model;
 
-public class Almond extends Enemy{
+public class Almond extends Enemy {
 
     public Almond() {
         hp = 1;

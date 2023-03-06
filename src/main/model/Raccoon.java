@@ -1,6 +1,6 @@
 package model;
 
-public class Raccoon extends Enemy{
+public class Raccoon extends Enemy {
 
     public Raccoon() {
         hp = 1;

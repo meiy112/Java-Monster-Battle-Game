@@ -1,6 +1,6 @@
 package model;
 
-public class God extends Enemy{
+public class God extends Enemy {
 
     public God() {
         hp = 4;

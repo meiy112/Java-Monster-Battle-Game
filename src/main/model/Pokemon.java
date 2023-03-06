@@ -1,6 +1,6 @@
 package model;
 
-public class Pokemon extends Enemy{
+public class Pokemon extends Enemy {
 
     public Pokemon() {
         hp = 2;

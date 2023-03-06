@@ -1,6 +1,6 @@
 package model;
 
-public class Link extends Enemy{
+public class Link extends Enemy {
 
     public Link() {
         hp = 2;
