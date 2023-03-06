@@ -48,6 +48,7 @@ public class JsonReader {
         quiz.setLevel(jsonObject.getInt("level"));
         quiz.setScore(jsonObject.getInt("score"));
         quiz.setQuestionNum(jsonObject.getInt("questionNum"));
+        quiz.setContGame(jsonObject.getBoolean("contGame"));
         return quiz;
     }
 

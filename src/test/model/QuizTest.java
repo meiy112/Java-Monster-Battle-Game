@@ -29,6 +29,8 @@ public class QuizTest {
         assertEquals(1, quiz.getLevel());
         assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getQuestions().size());
+        assertEquals(0, quiz.getQuestionNum());
+        assertTrue(quiz.getContGame());
     }
 
     @Test
@@ -47,25 +49,6 @@ public class QuizTest {
         assertEquals(3, quiz.getQuestions().size());
     }
 
-//    @Test
-//    void testAddOneEnemy() {
-//        assertEquals(0, quiz.getEnemies().size());
-//        quiz.addEnemy(smallEnemy);
-//        assertEquals(1, quiz.getEnemies().size());
-//        assertEquals(smallEnemy, quiz.getEnemy(0));
-//    }
-//
-//    @Test
-//    void testAddMultipleEnemies() {
-//        assertEquals(0, quiz.getEnemies().size());
-//        quiz.addEnemy(smallEnemy);
-//        quiz.addEnemy(mediumEnemy);
-//        quiz.addEnemy(largeEnemy);
-//        assertEquals(3, quiz.getEnemies().size());
-//        assertEquals(smallEnemy, quiz.getEnemy(0));
-//        assertEquals(mediumEnemy, quiz.getEnemy(1));
-//        assertEquals(largeEnemy, quiz.getEnemy(2));
-//    }
 
     @Test
     void testDefeatSmallEnemy() {

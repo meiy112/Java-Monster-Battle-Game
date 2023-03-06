@@ -58,6 +58,32 @@ public class Quiz implements Writable {
         return contGame;
     }
 
+    //setters
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public void setQuestionNum(int num) {
+        questionNum = num;
+    }
+
+    public void setContGame(boolean b) {
+        contGame = b;
+    }
+
+
     //MODIFIES: this
     //EFFECT: adds question to list of questions
     public void addQuestion(Question question) {
@@ -91,40 +117,6 @@ public class Quiz implements Writable {
         return hp <= 0;
     }
 
-    //MODIFIES: this
-    //EFFECT: sets score to given int
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    //MODIFIES: this
-    //EFFECT: sets hp to given int
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    //MODIFIES: this
-    //EFFECT: sets level to given int
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    //MODIFIES: this
-    //EFFECT: sets exp to given int
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
-
-    //MODIFIES: this
-    //EFFECT: sets current question index to given int
-    public void setQuestionNum(int num) {
-        questionNum = num;
-    }
-
-    public void setContGame(boolean b) {
-        contGame = b;
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -134,6 +126,7 @@ public class Quiz implements Writable {
         json.put("level", getLevel());
         json.put("exp", getExp());
         json.put("questionNum", getQuestionNum());
+        json.put("contGame", contGame);
         return json;
     }
 
