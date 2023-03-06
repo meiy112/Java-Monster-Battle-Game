@@ -9,6 +9,7 @@ public class QuizGame {
 
     private static Quiz quiz;
 
+    //EFFECT: runs the game menu
     public static void gameMenu() {
         System.out.println("'n' > create new quiz \n'l' > load saved quizzes");
         Scanner keyboardInput = new Scanner(System.in);
@@ -25,7 +26,7 @@ public class QuizGame {
 
     }
 
-    //EFFECT: runs the game menu
+    //EFFECT: runs the quiz menu
     public static void quizMenu() {
         System.out.println("'s' > start current quiz \n'e' > edit questions \n'b' > back \nThe "
                 + "quiz currently has " + quiz.getQuestions().size() + " questions.");
@@ -34,9 +35,9 @@ public class QuizGame {
         if (Objects.equals(input, "s")) {
             System.out.println("Starting quiz with " + quiz.getQuestions().size() + " questions");
             runQuiz();
-        } else if (Objects.equals(input, "e")){
+        } else if (Objects.equals(input, "e")) {
             editQuestions();
-        } else if (Objects.equals(input, "b")){
+        } else if (Objects.equals(input, "b")) {
             gameMenu();
         } else {
             System.out.println("Please enter a valid command");
@@ -44,6 +45,7 @@ public class QuizGame {
         }
     }
 
+    //EFFECT: menu screen where user can choose to add or delete questions
     public static void editQuestions() {
         int n = 1;
         for (Question q : quiz.getQuestions()) {
@@ -133,6 +135,9 @@ public class QuizGame {
         editQuestions();
     }
 
+    //CONSTRAINT: number entered must exist as a question number
+    //MODIFIES: this
+    //EFFECT: deletes question from index n-1 where n is the number entered
     public static void deleteQuestion() {
         System.out.println("Please enter the number of the question you wish to delete");
         Scanner keyboardInput = new Scanner(System.in);
@@ -172,8 +177,7 @@ public class QuizGame {
             }
             System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
         }
-        System.out.println("You've defeated " + quiz.getScore()
-                + " opponents and gotten to level " + quiz.getLevel() + "! \n");
+        printEnd();
         gameMenu();
     }
 
@@ -210,9 +214,11 @@ public class QuizGame {
         }
     }
 
+    //CONSTRAINT: integer must be within bounds
+    //EFFECT: returns randomly generated enemy
     public static Enemy generateEnemy(int i) {
         Enemy enemy = null;
-        if (i == 0){
+        if (i == 0) {
             enemy = new Almond();
         } else if (i == 1) {
             enemy = new Assassin();
@@ -234,6 +240,11 @@ public class QuizGame {
             enemy = new Link();
         }
         return enemy;
+    }
+
+    public static void printEnd(){
+        System.out.println("You've defeated " + quiz.getScore()
+                + " opponents and gotten to level " + quiz.getLevel() + "! \n");
     }
 }
 

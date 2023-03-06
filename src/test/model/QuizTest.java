@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class QuizTest {
 
     Quiz quiz;
-    Enemy smallMonster;
-    Enemy mediumMonster;
-    Enemy largeMonster;
+    Enemy smallEnemy;
+    Enemy mediumEnemy;
+    Enemy largeEnemy;
     Question question1;
 
     @BeforeEach
     void runBefore() {
         quiz = new Quiz();
-        smallMonster = new Enemy(1);
-        mediumMonster = new Enemy(2);
-        largeMonster = new Enemy(3);
+        smallEnemy = new Almond();
+        mediumEnemy = new Assassin();
+        largeEnemy = new MagicUser();
         question1 = new Question();
     }
 
@@ -28,7 +28,6 @@ public class QuizTest {
         assertEquals(3, quiz.getHp());
         assertEquals(1, quiz.getLevel());
         assertEquals(0, quiz.getScore());
-        assertEquals(0, quiz.getMonsters().size());
         assertEquals(0, quiz.getQuestions().size());
     }
 
@@ -48,60 +47,60 @@ public class QuizTest {
         assertEquals(3, quiz.getQuestions().size());
     }
 
-    @Test
-    void testAddOneMonster() {
-        assertEquals(0, quiz.getMonsters().size());
-        quiz.addMonster(smallMonster);
-        assertEquals(1, quiz.getMonsters().size());
-        assertEquals(smallMonster, quiz.getMonster(0));
-    }
+//    @Test
+//    void testAddOneEnemy() {
+//        assertEquals(0, quiz.getEnemies().size());
+//        quiz.addEnemy(smallEnemy);
+//        assertEquals(1, quiz.getEnemies().size());
+//        assertEquals(smallEnemy, quiz.getEnemy(0));
+//    }
+//
+//    @Test
+//    void testAddMultipleEnemies() {
+//        assertEquals(0, quiz.getEnemies().size());
+//        quiz.addEnemy(smallEnemy);
+//        quiz.addEnemy(mediumEnemy);
+//        quiz.addEnemy(largeEnemy);
+//        assertEquals(3, quiz.getEnemies().size());
+//        assertEquals(smallEnemy, quiz.getEnemy(0));
+//        assertEquals(mediumEnemy, quiz.getEnemy(1));
+//        assertEquals(largeEnemy, quiz.getEnemy(2));
+//    }
 
     @Test
-    void testAddMultipleMonsters() {
-        assertEquals(0, quiz.getMonsters().size());
-        quiz.addMonster(smallMonster);
-        quiz.addMonster(mediumMonster);
-        quiz.addMonster(largeMonster);
-        assertEquals(3, quiz.getMonsters().size());
-        assertEquals(smallMonster, quiz.getMonster(0));
-        assertEquals(mediumMonster, quiz.getMonster(1));
-        assertEquals(largeMonster, quiz.getMonster(2));
-    }
-
-    @Test
-    void testDefeatSmallMonster() {
+    void testDefeatSmallEnemy() {
         assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getExp());
-        quiz.defeatMonster(smallMonster);
+        quiz.defeatEnemy(smallEnemy);
         assertEquals(1, quiz.getScore());
         assertEquals(1, quiz.getExp());
     }
 
     @Test
-    void testDefeatMediumMonster() {
+    void testDefeatMediumEnemy() {
         assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getExp());
-        quiz.defeatMonster(mediumMonster);
+        quiz.defeatEnemy(mediumEnemy);
         assertEquals(1, quiz.getScore());
         assertEquals(2, quiz.getExp());
     }
 
     @Test
-    void testDefeatLargeMonster() {
+    void testDefeatLargeEnemy() {
         assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getExp());
-        quiz.defeatMonster(largeMonster);
+        quiz.defeatEnemy(largeEnemy);
         assertEquals(1, quiz.getScore());
         assertEquals(3, quiz.getExp());
     }
 
     @Test
-    void testDefeatMultipleMonsters() {
+    void testDefeatMultipleEnemies() {
         assertEquals(0, quiz.getScore());
         assertEquals(0, quiz.getExp());
-        quiz.defeatMonster(largeMonster);
-        quiz.defeatMonster(smallMonster);
-        quiz.defeatMonster(mediumMonster);
+        quiz.defeatEnemy(largeEnemy);
+        quiz.defeatEnemy(smallEnemy);
+        quiz.defeatEnemy(mediumEnemy);
         assertEquals(3, quiz.getScore());
         assertEquals(6, quiz.getExp());
     }
@@ -124,7 +123,7 @@ public class QuizTest {
     @Test
     void testLevelUpOnce() {
         assertEquals(1, quiz.getLevel());
-        quiz.defeatMonster(largeMonster);
+        quiz.defeatEnemy(largeEnemy);
         quiz.levelUp();
         assertEquals(2, quiz.getLevel());
     }
@@ -132,8 +131,8 @@ public class QuizTest {
     @Test
     void testLevelUpMultipleTimes() {
         assertEquals(1, quiz.getLevel());
-        quiz.defeatMonster(largeMonster);
-        quiz.defeatMonster(largeMonster);
+        quiz.defeatEnemy(largeEnemy);
+        quiz.defeatEnemy(largeEnemy);
         quiz.levelUp();
         assertEquals(3, quiz.getLevel());
     }
