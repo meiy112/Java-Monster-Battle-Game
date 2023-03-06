@@ -15,6 +15,8 @@ public class Quiz implements Writable {
     private int level;
     private int exp;
     private final List<Question> questions;
+    private int questionNum;
+    private boolean contGame;
 
     //EFFECT: creates a quiz with empty list of monsters and questions and default player stats
     public Quiz() {
@@ -22,7 +24,9 @@ public class Quiz implements Writable {
         this.hp = 3;
         this.level = 1;
         this.exp = 0;
+        this.questionNum = 0;
         this.questions = new ArrayList<>();
+        this.contGame = true;
     }
 
     // getters
@@ -42,8 +46,16 @@ public class Quiz implements Writable {
         return exp;
     }
 
+    public int getQuestionNum() {
+        return questionNum;
+    }
+
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    public boolean getContGame() {
+        return contGame;
     }
 
     //MODIFIES: this
@@ -79,10 +91,49 @@ public class Quiz implements Writable {
         return hp <= 0;
     }
 
+    //MODIFIES: this
+    //EFFECT: sets score to given int
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    //MODIFIES: this
+    //EFFECT: sets hp to given int
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    //MODIFIES: this
+    //EFFECT: sets level to given int
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    //MODIFIES: this
+    //EFFECT: sets exp to given int
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    //MODIFIES: this
+    //EFFECT: sets current question index to given int
+    public void setQuestionNum(int num) {
+        questionNum = num;
+    }
+
+    public void setContGame(boolean b) {
+        contGame = b;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("questions", questionsToJson());
+        json.put("hp", getHp());
+        json.put("score", getScore());
+        json.put("level", getLevel());
+        json.put("exp", getExp());
+        json.put("questionNum", getQuestionNum());
         return json;
     }
 

@@ -128,12 +128,14 @@ public class QuizGame {
         int n = rand.nextInt(11);
         Enemy currEnemy = generateEnemy(n);
         int isNewEnemy = 1;
+        quiz.setContGame(true);
 
-        for (Question question : quiz.getQuestions()) {
+        while (quiz.getQuestionNum() < quiz.getQuestions().size() && quiz.getContGame()) {
+            System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
             getDialogue(isNewEnemy, currEnemy);
             isNewEnemy = 0;
 
-            evaluateQuizAnswer(question, currEnemy);
+            evaluateQuizAnswer(quiz.getQuestions().get(quiz.getQuestionNum()), currEnemy);
             checkIfLevelUp();
             if (currEnemy.isDefeated()) {
                 int i = rand.nextInt(11);
@@ -144,7 +146,6 @@ public class QuizGame {
                 System.out.println("You've lost all your health. Game over!");
                 break;
             }
-            System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
         }
         printEnd();
     }
@@ -160,20 +161,55 @@ public class QuizGame {
     //EFFECT: compares inputted answer to the question's correct answer
     public static void evaluateQuizAnswer(Question question, Enemy enemy) {
         Scanner keyboardInput = new Scanner(System.in);
-        System.out.println("Answer the following question: " + question.getPrompt());
+        System.out.println("enter SPACE to pause\nQ " + (quiz.getQuestionNum() + 1) + "/"
+                + quiz.getQuestions().size() + ": " + question.getPrompt());
         String answer = keyboardInput.nextLine();
 
-        if (answer.equals(question.getAnswer())) {
+        if (answer.equals(" ")) {
+            pauseGame();
+        } else if (answer.equals(question.getAnswer())) {
             enemy.attackEnemy();
             if (enemy.isDefeated()) {
                 quiz.defeatEnemy(enemy);
                 System.out.println("You've defeated the Enemy!");
+                quiz.setQuestionNum(quiz.getQuestionNum() + 1);
             } else {
                 System.out.println("You've hit the Enemy once!");
+                quiz.setQuestionNum(quiz.getQuestionNum() + 1);
             }
         } else {
             quiz.decreaseHpByOne();
             System.out.println("Your attack missed, you were hit by the Enemy!");
+            quiz.setQuestionNum(quiz.getQuestionNum() + 1);
+        }
+    }
+
+    //EFFECT: runs game paused menu
+    public static void pauseGame() {
+        boolean keepGoing = true;
+
+        while (keepGoing) {
+            System.out.println("Quiz paused \nSelect from: \n's' > save game \n'c' > continue game "
+                    + "\n'q' > quit to menu");
+            Scanner keyboardInput = new Scanner(System.in);
+            String input = keyboardInput.nextLine();
+
+            switch (input) {
+                case "s":
+                    saveQuiz();
+                    break;
+                case "c":
+                    keepGoing = false;
+                    break;
+                case "r":
+                    quiz.setQuestionNum(0);
+                    keepGoing = false;
+                    break;
+                case "q":
+                    quiz.setContGame(false);
+                    keepGoing = false;
+                    break;
+            }
         }
     }
 

@@ -43,6 +43,11 @@ public class JsonReader {
     private Quiz parseQuiz(JSONObject jsonObject) {
         Quiz quiz = new Quiz();
         addQuestions(quiz, jsonObject);
+        quiz.setExp(jsonObject.getInt("exp"));
+        quiz.setHp(jsonObject.getInt("hp"));
+        quiz.setLevel(jsonObject.getInt("level"));
+        quiz.setScore(jsonObject.getInt("score"));
+        quiz.setQuestionNum(jsonObject.getInt("questionNum"));
         return quiz;
     }
 

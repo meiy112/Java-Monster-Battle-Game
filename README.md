@@ -21,5 +21,7 @@ which is why I wanted to combine these two interests and studying habits in my p
 - As a user, I want to be able to start my quiz game.
 - As a user, I want to be able to defeat randomly generated opponents by answering questions.
 - As a user, I want to be able to view, add, and remove questions in my quiz.
-- As a user, I want to be able to have the option to save my quiz after playing over it once. 
-- As a user, I want to be able to have the option to load my saved quizzes from the menu.
+- As a user, I want to be able to pause and unpause my quiz anytime it's running. 
+- As a user, I want to be able to quit my quiz and return to menu mid-game. 
+- As a user, I want to be able to have the option to save the entire state of my quiz anytime. 
+- As a user, I want to be able to have the option to load my saved quiz state from the menu.
