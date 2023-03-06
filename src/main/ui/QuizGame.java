@@ -13,7 +13,7 @@ import java.util.*;
 public class QuizGame {
 
     private static final String JSON_STORE = "./data/myFile.json";
-    private static final int NUM_ENEMIES_TO_GEN = 12;
+    private static final int NUM_ENEMIES_TO_GEN = 13;
     private static Quiz quiz;
     private static JsonReader jsonReader;
     private static JsonWriter jsonWriter;
@@ -252,6 +252,8 @@ public class QuizGame {
             enemy = new God();
         } else if (i == 11) {
             enemy = new GooseWithKnife();
+        } else if (i == 12) {
+            enemy = new YourInstructor();
         }
         return enemy;
     }
