@@ -13,6 +13,7 @@ import java.util.*;
 public class QuizGame {
 
     private static final String JSON_STORE = "./data/myFile.json";
+    private static final int NUM_ENEMIES_TO_GEN = 12;
     private static Quiz quiz;
     private static JsonReader jsonReader;
     private static JsonWriter jsonWriter;
@@ -125,7 +126,7 @@ public class QuizGame {
     //EFFECT: starts the quiz game, updating player stats along the way
     public static void runQuiz() {
         Random rand = new Random();
-        int n = rand.nextInt(11);
+        int n = rand.nextInt(NUM_ENEMIES_TO_GEN);
         Enemy currEnemy = generateEnemy(n);
         int isNewEnemy = 1;
         quiz.setContGame(true);
@@ -138,7 +139,7 @@ public class QuizGame {
             evaluateQuizAnswer(quiz.getQuestions().get(quiz.getQuestionNum()), currEnemy);
             checkIfLevelUp();
             if (currEnemy.isDefeated()) {
-                int i = rand.nextInt(11);
+                int i = rand.nextInt(NUM_ENEMIES_TO_GEN);
                 currEnemy = generateEnemy(i);
                 isNewEnemy = 1;
             }
@@ -248,16 +249,19 @@ public class QuizGame {
             enemy = new Link();
         } else if (i == 10) {
             enemy = new God();
+        } else if (i == 11) {
+            enemy = new GooseWithKnife();
         }
         return enemy;
     }
 
+    //EFFECTS: prints game ending statement
     public static void printEnd() {
         System.out.println("You've defeated " + quiz.getScore()
                 + " opponents and gotten to level " + quiz.getLevel() + "! \n");
     }
 
-    // EFFECTS: saves quiz to file
+    //EFFECTS: saves quiz to file
     private static void saveQuiz() {
         try {
             jsonWriter.open();
@@ -269,8 +273,8 @@ public class QuizGame {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: loads quiz from file
+    //MODIFIES: this
+    //EFFECTS: loads quiz from file
     private static void loadQuiz() {
         try {
             quiz = jsonReader.read();

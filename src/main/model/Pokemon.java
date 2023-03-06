@@ -1,5 +1,6 @@
 package model;
 
+//enemy type pokemon with 2 hp, 2 exp, and unique dialogue
 public class Pokemon extends Enemy {
 
     public Pokemon() {

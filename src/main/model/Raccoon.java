@@ -1,5 +1,6 @@
 package model;
 
+//enemy type raccoon with 1 hp, 1 exp, and unique dialogue
 public class Raccoon extends Enemy {
 
     public Raccoon() {

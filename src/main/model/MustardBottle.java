@@ -1,5 +1,6 @@
 package model;
 
+//enemy type mustard bottle with 1 hp, 1 exp, and unique dialogue
 public class MustardBottle extends Enemy {
 
     public MustardBottle() {

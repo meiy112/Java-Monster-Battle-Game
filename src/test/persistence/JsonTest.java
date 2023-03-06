@@ -1,10 +1,12 @@
 package persistence;
 
+import model.Question;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JsonTest {
-    protected void checkThingy(String name, Category category, Thingy thingy) {
-        assertEquals(name, thingy.getName());
-        assertEquals(category, thingy.getCategory());
+    protected void checkQuestion(Question question, String prompt, String answer) {
+        assertEquals(prompt, question.getPrompt());
+        assertEquals(answer, question.getAnswer());
     }
 }

@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JsonReaderTest {
+public class JsonReaderTest extends JsonTest {
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
@@ -21,7 +21,7 @@ public class JsonReaderTest {
 
     @Test
     void testDefaultQuiz() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderDefaultQuizJson.json");
         try {
             Quiz quiz = reader.read();
             assertEquals(0, quiz.getQuestionNum());
@@ -29,6 +29,7 @@ public class JsonReaderTest {
             assertTrue(quiz.getContGame());
             assertEquals(3, quiz.getHp());
             assertEquals(0, quiz.getExp());
+            assertEquals(1, quiz.getLevel());
             assertEquals(0, quiz.getQuestions().size());
 
         } catch (IOException e) {
@@ -38,14 +39,21 @@ public class JsonReaderTest {
 
     @Test
     void testEditedQuiz() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderEditedQuizJson.json");
         try {
-            WorkRoom wr = reader.read();
-            assertEquals("My work room", wr.getName());
-            List<Thingy> thingies = wr.getThingies();
-            assertEquals(2, thingies.size());
-            checkThingy("needle", Category.STITCHING, thingies.get(0));
-            checkThingy("saw", Category.WOODWORK, thingies.get(1));
+            Quiz quiz = reader.read();
+            assertEquals(2, quiz.getQuestionNum());
+            assertEquals(1, quiz.getScore());
+            assertTrue(quiz.getContGame());
+            assertEquals(2, quiz.getHp());
+            assertEquals(1, quiz.getExp());
+            assertEquals(1, quiz.getLevel());
+            assertEquals(4, quiz.getQuestions().size());
+            checkQuestion(quiz.getQuestions().get(0), "What is 1 + 1?", "2");
+            checkQuestion(quiz.getQuestions().get(1), "What is 2 + 2?", "4");
+            checkQuestion(quiz.getQuestions().get(2), "What is 1 + 3?", "4");
+            checkQuestion(quiz.getQuestions().get(3), "What is 4 + 2?", "6");
+
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

@@ -1,5 +1,6 @@
 package model;
 
+//enemy type student with 1 hp, 1 exp, and unique dialogue
 public class Student extends Enemy {
 
     public Student() {

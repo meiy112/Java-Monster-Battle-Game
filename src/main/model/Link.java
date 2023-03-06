@@ -1,5 +1,6 @@
 package model;
 
+//enemy type link with 2 hp, 2 exp, and unique dialogue
 public class Link extends Enemy {
 
     public Link() {

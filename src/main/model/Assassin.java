@@ -1,5 +1,6 @@
 package model;
 
+//enemy type assassin with 2 hp, 2 exp, and unique dialogue
 public class Assassin extends Enemy {
 
     public Assassin() {
