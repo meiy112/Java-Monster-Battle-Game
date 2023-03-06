@@ -1,68 +1,94 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
+
 
 //quiz game application
 public class QuizGame {
 
+    private static final String JSON_STORE = "./data/myFile.json";
     private static Quiz quiz;
+    private static JsonReader jsonReader;
+    private static JsonWriter jsonWriter;
 
     //EFFECT: runs the game menu
     public static void gameMenu() {
-        System.out.println("'n' > create new quiz \n'l' > load saved quizzes");
-        Scanner keyboardInput = new Scanner(System.in);
-        String input = keyboardInput.nextLine();
-        if (Objects.equals(input, "n")) {
-            quiz = new Quiz();
-            quizMenu();
-        } else if (Objects.equals(input, "l")) {
-            loadQuizzes();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
+        boolean keepGoing = true;
+
+        while (keepGoing) {
+            System.out.println("Select from: \n'n' > create new quiz \n'l' > load questions \n'q' > quit");
+            Scanner keyboardInput = new Scanner(System.in);
+            String input = keyboardInput.nextLine();
+
+            if (Objects.equals(input, "n")) {
+                quiz = new Quiz();
+                quizMenu();
+            } else if (Objects.equals(input, "l")) {
+                loadQuiz();
+            } else if (Objects.equals(input, "q")) {
+                keepGoing = false;
+            }
         }
-    }
-
-    public static void loadQuizzes() {
-
+        System.out.println("Goodbye!");
     }
 
     //EFFECT: runs the quiz menu
     public static void quizMenu() {
-        System.out.println("'s' > start current quiz \n'e' > edit questions \n'b' > back \nThe "
-                + "quiz currently has " + quiz.getQuestions().size() + " questions.");
-        Scanner keyboardInput = new Scanner(System.in);
-        String input = keyboardInput.nextLine();
-        if (Objects.equals(input, "s")) {
-            System.out.println("Starting quiz with " + quiz.getQuestions().size() + " questions");
-            runQuiz();
-        } else if (Objects.equals(input, "e")) {
-            editQuestions();
-        } else if (Objects.equals(input, "b")) {
-            gameMenu();
-        } else {
-            System.out.println("Please enter a valid command");
-            quizMenu();
+        boolean keepGoing = true;
+
+        while (keepGoing) {
+            System.out.println("'p' > play current quiz \n'e' > edit questions \n's' > save current quiz" +
+                    " \n'b' > back \nThe quiz currently has " + quiz.getQuestions().size() + " questions.");
+            Scanner keyboardInput = new Scanner(System.in);
+            String input = keyboardInput.nextLine();
+            if (Objects.equals(input, "p")) {
+                System.out.println("Starting quiz with " + quiz.getQuestions().size() + " questions");
+                keepGoing = false;
+                runQuiz();
+            } else if (Objects.equals(input, "e")) {
+                editQuestions();
+            } else if (Objects.equals(input, "s")) {
+                saveQuiz();
+            } else if (Objects.equals(input, "b")) {
+                keepGoing = false;
+            } else {
+                System.out.println("Please enter a valid command");
+            }
         }
     }
 
     //EFFECT: menu screen where user can choose to add or delete questions
     public static void editQuestions() {
-        int n = 1;
-        for (Question q : quiz.getQuestions()) {
-            System.out.println("Q" + n + "\nq: " + q.getPrompt() + "\na: " + q.getAnswer());
-            n++;
-        }
-        System.out.println("'a' > add question \n'd' > delete question \n'b' > back");
-        Scanner keyboardInput = new Scanner(System.in);
-        String input = keyboardInput.nextLine();
-        if (Objects.equals(input, "a")) {
-            addQuestion();
-        } else if (Objects.equals(input, "d")) {
-            deleteQuestion();
-        } else if (Objects.equals(input, "b")) {
-            quizMenu();
-        } else {
-            System.out.println("Please enter a valid command");
+        boolean keepGoing = true;
+
+        while (keepGoing) {
+            int n = 1;
+            for (Question q : quiz.getQuestions()) {
+                System.out.println("Q" + n + "\nq: " + q.getPrompt() + "\na: " + q.getAnswer());
+                n++;
+            }
+            System.out.println("'a' > add question \n'd' > delete question \n'b' > back");
+            Scanner keyboardInput = new Scanner(System.in);
+            String input = keyboardInput.nextLine();
+
+            if (Objects.equals(input, "a")) {
+                addQuestion();
+            } else if (Objects.equals(input, "d")) {
+                deleteQuestion();
+            } else if (Objects.equals(input, "b")) {
+                keepGoing = false;
+            } else {
+                System.out.println("Please enter a valid command");
+            }
         }
     }
 
@@ -131,8 +157,6 @@ public class QuizGame {
         question.setAnswer(answer);
 
         quiz.addQuestion(question);
-
-        editQuestions();
     }
 
     //CONSTRAINT: number entered must exist as a question number
@@ -143,8 +167,6 @@ public class QuizGame {
         Scanner keyboardInput = new Scanner(System.in);
         int question = keyboardInput.nextInt();
         quiz.getQuestions().remove(question - 1);
-
-        editQuestions();
     }
 
     //CONSTRAINT: quiz must have at least one Enemy added
@@ -152,7 +174,7 @@ public class QuizGame {
     //EFFECT: starts the quiz game, updating player stats along the way
     public static void runQuiz() {
         Random rand = new Random();
-        int n = rand.nextInt(10);
+        int n = rand.nextInt(11);
         Enemy currEnemy = generateEnemy(n);
         int isNewEnemy = 1;
 
@@ -160,14 +182,10 @@ public class QuizGame {
             getDialogue(isNewEnemy, currEnemy);
             isNewEnemy = 0;
 
-            Scanner keyboardInput = new Scanner(System.in);
-            System.out.println("Answer the following question: " + question.getPrompt());
-            String answer = keyboardInput.nextLine();
-
-            evaluateQuizAnswer(answer, question, currEnemy);
+            evaluateQuizAnswer(question, currEnemy);
             checkIfLevelUp();
             if (currEnemy.isDefeated()) {
-                int i = rand.nextInt(10);
+                int i = rand.nextInt(11);
                 currEnemy = generateEnemy(i);
                 isNewEnemy = 1;
             }
@@ -178,7 +196,6 @@ public class QuizGame {
             System.out.println("HP: " + quiz.getHp() + "\nLevel: " + quiz.getLevel());
         }
         printEnd();
-        gameMenu();
     }
 
     //CONSTRAINT: isNewEnemy must be either 1 or 0
@@ -190,7 +207,11 @@ public class QuizGame {
     }
 
     //EFFECT: compares inputted answer to the question's correct answer
-    public static void evaluateQuizAnswer(String answer, Question question, Enemy enemy) {
+    public static void evaluateQuizAnswer(Question question, Enemy enemy) {
+        Scanner keyboardInput = new Scanner(System.in);
+        System.out.println("Answer the following question: " + question.getPrompt());
+        String answer = keyboardInput.nextLine();
+
         if (answer.equals(question.getAnswer())) {
             enemy.attackEnemy();
             if (enemy.isDefeated()) {
@@ -238,13 +259,38 @@ public class QuizGame {
             enemy = new Student();
         } else if (i == 9) {
             enemy = new Link();
+        } else if (i == 10) {
+            enemy = new God();
         }
         return enemy;
     }
 
-    public static void printEnd(){
+    public static void printEnd() {
         System.out.println("You've defeated " + quiz.getScore()
                 + " opponents and gotten to level " + quiz.getLevel() + "! \n");
+    }
+
+    // EFFECTS: saves quiz to file
+    private static void saveQuiz() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(quiz);
+            jsonWriter.close();
+            System.out.println("Saved quiz to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads quiz from file
+    private static void loadQuiz() {
+        try {
+            quiz = jsonReader.read();
+            System.out.println("Loaded quiz from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }
 

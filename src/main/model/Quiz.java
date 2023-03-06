@@ -1,30 +1,27 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //represents a quiz that keeps track of the player's score, hp, level, exp, and has a list of monsters and questions
-public class Quiz {
-    private static int INITIAL_SCORE = 0;
-    private static int INITIAL_HP = 3;
-    private static int INITIAL_LEVEL = 1;
-    private static int INITIAL_EXP = 0;
-    private static int EXP_NEEDED_TO_LEVEL_UP = 3;
+public class Quiz implements Writable {
 
     private int score;
     private int hp;
     private int level;
     private int exp;
-//    private final List<Monster> monsters;
     private final List<Question> questions;
 
     //EFFECT: creates a quiz with empty list of monsters and questions and default player stats
     public Quiz() {
-        this.score = INITIAL_SCORE;
-        this.hp = INITIAL_HP;
-        this.level = INITIAL_LEVEL;
-        this.exp = INITIAL_EXP;
-//        this.monsters = new ArrayList<>();
+        this.score = 0;
+        this.hp = 3;
+        this.level = 1;
+        this.exp = 0;
         this.questions = new ArrayList<>();
     }
 
@@ -45,30 +42,15 @@ public class Quiz {
         return exp;
     }
 
-//    public Monster getMonster(int i) {
-//        return monsters.get(i);
-//    }
-//
-//    public List<Monster> getMonsters() {
-//        return monsters;
-//    }
-
     public List<Question> getQuestions() {
         return questions;
     }
-
 
     //MODIFIES: this
     //EFFECT: adds question to list of questions
     public void addQuestion(Question question) {
         questions.add(question);
     }
-
-//    //MODIFIES: this
-//    //EFFECT: adds monster to list of monsters
-//    public void addMonster(Monster monster) {
-//        monsters.add(monster);
-//    }
 
     //CONSTRAINT: monster must have hp <= 0
     //MODIFIES: this
@@ -87,13 +69,31 @@ public class Quiz {
     //MODIFIES: this
     //EFFECT: increases level by using up player's exp
     public void levelUp() {
-        int levels = exp / EXP_NEEDED_TO_LEVEL_UP;
+        int levels = exp / 3;
         level += levels;
-        exp -= EXP_NEEDED_TO_LEVEL_UP * levels;
+        exp -= 3 * levels;
     }
 
     //EFFECT: returns true if player hp is <= 0, otherwise false
     public boolean isGameOver() {
         return hp <= 0;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("questions", questionsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns quiz state and questions as a JSON array
+    private JSONArray questionsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Question q : questions) {
+            jsonArray.put(q.toJson());
+        }
+
+        return jsonArray;
     }
 }

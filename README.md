@@ -19,7 +19,7 @@ which is why I wanted to combine these two interests and studying habits in my p
 ## User Stories
 - As a user, I want to be able to add an arbitrary number of personalized questions into a quiz.
 - As a user, I want to be able to start my quiz game.
-- As a user, I want to be able to defeat monsters by answering questions.
-- As a user, I want to be able to view, review, and edit questions in my quiz.
+- As a user, I want to be able to defeat randomly generated opponents by answering questions.
+- As a user, I want to be able to view, add, and remove questions in my quiz.
 - As a user, I want to be able to have the option to save my quiz after playing over it once. 
 - As a user, I want to be able to have the option to load my saved quizzes from the menu.
