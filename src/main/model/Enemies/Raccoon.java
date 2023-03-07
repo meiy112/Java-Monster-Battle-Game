@@ -1,4 +1,6 @@
-package model;
+package model.Enemies;
+
+import model.Enemy;
 
 //enemy type raccoon with 1 hp, 1 exp, and unique dialogue
 public class Raccoon extends Enemy {

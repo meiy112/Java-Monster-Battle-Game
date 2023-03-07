@@ -1,5 +1,8 @@
 package model;
 
+import model.Enemies.Almond;
+import model.Enemies.Assassin;
+import model.Enemies.MagicUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

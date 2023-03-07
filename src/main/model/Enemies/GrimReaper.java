@@ -1,4 +1,6 @@
-package model;
+package model.Enemies;
+
+import model.Enemy;
 
 //enemy type grim reaper with 3 hp, 3 exp, and unique dialogue
 public class GrimReaper extends Enemy {

@@ -1,4 +1,6 @@
-package model;
+package model.Enemies;
+
+import model.Enemy;
 
 public class YourInstructor extends Enemy {
 

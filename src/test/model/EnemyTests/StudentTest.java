@@ -1,24 +1,25 @@
-package model;
+package model.EnemyTests;
 
+import model.Enemies.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MustardBottleTest {
+public class StudentTest {
 
-    MustardBottle enemy;
+    Student enemy;
 
     @BeforeEach
     void runBefore() {
-        enemy = new MustardBottle();
+        enemy = new Student();
     }
 
     @Test
     void testConstructor() {
         assertEquals(1, enemy.getEnemyHp());
         assertEquals(1, enemy.getEnemyExp());
-        assertEquals("A mustard bottle appeared! She sent a weather balloon down to earth and framed China.",
+        assertEquals("A student appeared! They look tired... as usual.",
                 enemy.getEnemyDialogue());
     }
 }

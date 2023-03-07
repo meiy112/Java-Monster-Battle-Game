@@ -1,24 +1,25 @@
-package model;
+package model.EnemyTests;
 
+import model.Enemies.YourInstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PokemonTest {
+public class YourInstructorTest {
 
-    Pokemon enemy;
+    YourInstructor enemy;
 
     @BeforeEach
     void runBefore() {
-        enemy = new Pokemon();
+        enemy = new YourInstructor();
     }
 
     @Test
     void testConstructor() {
         assertEquals(2, enemy.getEnemyHp());
         assertEquals(2, enemy.getEnemyExp());
-        assertEquals("A pokemon appeared! Who's that pokemon?!",
+        assertEquals("Your instructor appeared! They tell you to study hard for your next exam.",
                 enemy.getEnemyDialogue());
     }
 }

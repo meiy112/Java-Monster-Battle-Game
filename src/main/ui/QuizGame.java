@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import model.Enemies.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -191,7 +192,7 @@ public class QuizGame {
 
         while (keepGoing) {
             System.out.println("Quiz paused \nSelect from: \n's' > save game \n'c' > continue game "
-                    + "\n'q' > quit to menu");
+                    + "\n'r' > restart game \n'q' > quit to menu");
             Scanner keyboardInput = new Scanner(System.in);
             String input = keyboardInput.nextLine();
 
@@ -203,7 +204,7 @@ public class QuizGame {
                     keepGoing = false;
                     break;
                 case "r":
-                    quiz.setQuestionNum(0);
+                    restartGame();
                     keepGoing = false;
                     break;
                 case "q":
@@ -212,6 +213,17 @@ public class QuizGame {
                     break;
             }
         }
+    }
+
+    //MODIFIES: this
+    //EFFECT: restores game to default settings and starts from first question
+    public static void restartGame() {
+        quiz.setQuestionNum(0);
+        quiz.setExp(0);
+        quiz.setLevel(1);
+        quiz.setScore(0);
+        quiz.setHp(3);
+        quiz.setContGame(true);
     }
 
     //MODIFIES: this
@@ -225,7 +237,6 @@ public class QuizGame {
 
     //CONSTRAINT: integer must be within bounds
     //EFFECT: returns randomly generated enemy
-    @SuppressWarnings("methodlength")
     public static Enemy generateEnemy(int i) {
         Enemy enemy = null;
         if (i == 0) {
@@ -248,12 +259,6 @@ public class QuizGame {
             enemy = new Student();
         } else if (i == 9) {
             enemy = new Link();
-        } else if (i == 10) {
-            enemy = new God();
-        } else if (i == 11) {
-            enemy = new GooseWithKnife();
-        } else if (i == 12) {
-            enemy = new YourInstructor();
         }
         return enemy;
     }
