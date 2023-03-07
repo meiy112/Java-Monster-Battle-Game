@@ -1,7 +1,6 @@
 package ui;
 
 import model.*;
-import model.Enemies.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 

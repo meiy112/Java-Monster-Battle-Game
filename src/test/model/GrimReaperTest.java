@@ -1,25 +1,24 @@
-package model.EnemyTests;
+package model;
 
-import model.Enemies.MagicUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MagicUserTest {
+public class GrimReaperTest {
 
-    MagicUser enemy;
+    GrimReaper enemy;
 
     @BeforeEach
     void runBefore() {
-        enemy = new MagicUser();
+        enemy = new GrimReaper();
     }
 
     @Test
     void testConstructor() {
         assertEquals(3, enemy.getEnemyHp());
         assertEquals(3, enemy.getEnemyExp());
-        assertEquals("A magic user appeared, they look very strong!",
+        assertEquals("The grim reaper appeared, they look very strong!",
                 enemy.getEnemyDialogue());
     }
 }

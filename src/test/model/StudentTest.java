@@ -1,25 +1,24 @@
-package model.EnemyTests;
+package model;
 
-import model.Enemies.GooseWithKnife;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GooseWithKnifeTest {
+public class StudentTest {
 
-    GooseWithKnife enemy;
+    Student enemy;
 
     @BeforeEach
     void runBefore() {
-        enemy = new GooseWithKnife();
+        enemy = new Student();
     }
 
     @Test
     void testConstructor() {
         assertEquals(1, enemy.getEnemyHp());
         assertEquals(1, enemy.getEnemyExp());
-        assertEquals("A goose with a knife appeared! *Honk*",
+        assertEquals("A student appeared! They look tired... as usual.",
                 enemy.getEnemyDialogue());
     }
 }
