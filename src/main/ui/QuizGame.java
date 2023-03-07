@@ -236,6 +236,7 @@ public class QuizGame {
 
     //CONSTRAINT: integer must be within bounds
     //EFFECT: returns randomly generated enemy
+    @SuppressWarnings("methodlength")
     public static Enemy generateEnemy(int i) {
         Enemy enemy = null;
         if (i == 0) {
@@ -258,6 +259,12 @@ public class QuizGame {
             enemy = new Student();
         } else if (i == 9) {
             enemy = new Link();
+        } else if (i == 10) {
+            enemy = new God();
+        } else if (i == 11) {
+            enemy = new GooseWithKnife();
+        } else if (i == 12) {
+            enemy = new YourInstructor();
         }
         return enemy;
     }
