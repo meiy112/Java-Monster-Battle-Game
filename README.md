@@ -26,3 +26,7 @@ which is why I wanted to combine my interests and studying habits in my personal
 if I so choose. 
 - As a user, I want to be able to have the option to save the entire state of my quiz anytime. 
 - As a user, I want to be able to have the option to load my saved quiz state from the menu.
+
+* The methods in the JsonReader, JsonWriter class and toJson() method with its respective Override methods have been
+sampled from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git. The same applies to the tests in the
+JsonReaderTest, JsonWriterTest, and JsonTest methods. 
