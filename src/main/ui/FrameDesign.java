@@ -7,13 +7,11 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 
 public class FrameDesign extends JFrame {
@@ -45,18 +43,17 @@ public class FrameDesign extends JFrame {
                 try {
                     Quiz quiz = jsonReader.read();
 
-                    DefaultTableModel questionTable = (DefaultTableModel)questions.getModel();
-                    for (int i = 0; i < questionTable.getRowCount(); i++) {
-                        String prompt = questionTable.getValueAt(i, 1).toString();
-                        String answer = questionTable.getValueAt(i, 1).toString();
-                        Question question = new Question();
-                        question.setAnswer(answer);
-                        question.setPrompt(prompt);
-                        quiz.addQuestion(question);
-                        
+                    setQuestionTable();
+                    DefaultTableModel questionTable = (DefaultTableModel) questions.getModel();
+
+                    for (Question q : quiz.getQuestions()) {
+                        String prompt = q.getPrompt();
+                        String answer = q.getAnswer();
+                        questionTable.addRow(new Object[]{questionTable.getRowCount() + 1, prompt, answer});
                     }
+
                     System.out.println("Loaded quiz from " + JSON_STORE);
-                } catch (IOException e) {
+                } catch (IOException ex) {
                     System.out.println("Unable to read from file: " + JSON_STORE);
                 }
             }
@@ -68,7 +65,7 @@ public class FrameDesign extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Quiz quiz = new Quiz();
 
-                DefaultTableModel questionTable = (DefaultTableModel)questions.getModel();
+                DefaultTableModel questionTable = (DefaultTableModel) questions.getModel();
                 for (int i = 0; i < questionTable.getRowCount(); i++) {
                     String prompt = questionTable.getValueAt(i, 1).toString();
                     String answer = questionTable.getValueAt(i, 1).toString();
@@ -93,10 +90,33 @@ public class FrameDesign extends JFrame {
         addQuestionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String prompt = JOptionPane.showInputDialog("Enter Prompt");
-                String answer = JOptionPane.showInputDialog("Enter Answer");
+//                String prompt = JOptionPane.showInputDialog("Enter Prompt");
+//                String answer = JOptionPane.showInputDialog("Enter Answer");
 
-                DefaultTableModel questionTable = (DefaultTableModel)questions.getModel();
+                ImageIcon p = new ImageIcon("./data/p.jpg");
+                Image scaledImage = p.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH);
+                ImageIcon scaledP = new ImageIcon(scaledImage);
+
+                JPanel promptPanel = new JPanel(new BorderLayout());
+                promptPanel.add(new JLabel("Enter Prompt:"), BorderLayout.NORTH);
+                promptPanel.add(new JLabel(scaledP), BorderLayout.WEST);
+
+                String prompt = JOptionPane.showInputDialog(null, promptPanel, "Prompt",
+                        JOptionPane.PLAIN_MESSAGE);
+
+
+                ImageIcon a = new ImageIcon("./data/a.jpg");
+                Image scaledImage2 = a.getImage().getScaledInstance(100, 70, Image.SCALE_SMOOTH);
+                ImageIcon scaledA = new ImageIcon(scaledImage2);
+
+                JPanel answerPanel = new JPanel(new BorderLayout());
+                answerPanel.add(new JLabel("Enter Answer:"), BorderLayout.NORTH);
+                answerPanel.add(new JLabel(scaledA), BorderLayout.WEST);
+
+                String answer = JOptionPane.showInputDialog(null, answerPanel, "Answer",
+                        JOptionPane.PLAIN_MESSAGE);
+
+                DefaultTableModel questionTable = (DefaultTableModel) questions.getModel();
                 questionTable.addRow(new Object[]{questionTable.getRowCount() + 1, prompt, answer});
             }
         });
@@ -107,7 +127,7 @@ public class FrameDesign extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int row = Integer.parseInt(JOptionPane.showInputDialog("Enter the # of the question to be removed"));
 
-                DefaultTableModel questionTable = (DefaultTableModel)questions.getModel();
+                DefaultTableModel questionTable = (DefaultTableModel) questions.getModel();
                 questionTable.removeRow(row - 1);
                 for (int i = 0; i < questionTable.getRowCount(); i++) {
                     int value = Integer.parseInt(questionTable.getValueAt(i, 0).toString());
@@ -120,7 +140,7 @@ public class FrameDesign extends JFrame {
     }
 
     public void setQuestionTable() {
-        questions.setModel(new DefaultTableModel(null, new String[] {"#", "Prompt", "Answer"}));
+        questions.setModel(new DefaultTableModel(null, new String[]{"#", "Prompt", "Answer"}));
     }
 
     public static void main(String[] args) {
