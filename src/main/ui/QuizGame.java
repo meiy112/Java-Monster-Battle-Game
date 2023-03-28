@@ -12,11 +12,11 @@ import java.util.*;
 //quiz game application
 public class QuizGame {
 
-    private static final String JSON_STORE = "./data/myFile.json";
+    static final String JSON_STORE = "./data/myFile.json";
     private static final int NUM_ENEMIES_TO_GEN = 13;
     private static Quiz quiz;
     private static JsonReader jsonReader;
-    private static JsonWriter jsonWriter;
+    static JsonWriter jsonWriter;
 
     //EFFECT: runs the game menu
     public static void gameMenu() {

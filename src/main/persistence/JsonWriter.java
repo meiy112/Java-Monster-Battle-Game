@@ -29,6 +29,7 @@ public class JsonWriter {
     public void write(Quiz quiz) {
         JSONObject json = quiz.toJson();
         saveToFile(json.toString(TAB));
+        writer.flush();
     }
 
     // MODIFIES: this
