@@ -27,6 +27,17 @@ if I so choose.
 - As a user, I want to be able to have the option to save the entire state of my quiz anytime. 
 - As a user, I want to be able to have the option to load my saved quiz state from the menu.
 
+# Instructions for Grader
+- You can generate the first required action related to adding Xs to a Y by clicking on the "add question" button. A
+pop-up will appear that prompts the user to enter a prompt and answer for the question. The question will then be added
+to the quiz's list of questions. 
+- You can generate the second required action related to adding Xs to a Y by clicking on the "delete question" button. A
+pop-up will appear that prompts the user to input the number of the question, which can be found on the leftmost column.
+The question chosen will then be removed from the quiz's list of questions. 
+- You can locate my visual component by looking at the frame's icon image and the quiz icon above the buttons. 
+- You can save the state of my application by clicking on the "save quiz" button. 
+- You can reload the state of my application by clicking on the "load quiz" button. 
+
 *The methods in the JsonReader, JsonWriter class and the toJson() method with its respective Override methods have been
 sampled from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git. The same applies to the tests in the
 JsonReaderTest, JsonWriterTest, and JsonTest methods. 
