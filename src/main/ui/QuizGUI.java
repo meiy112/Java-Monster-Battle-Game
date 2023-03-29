@@ -7,15 +7,13 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
-public class FrameDesign extends JFrame {
+public class QuizGUI extends JFrame {
 
     static final String JSON_STORE = "./data/myFile.json";
 
@@ -35,7 +33,7 @@ public class FrameDesign extends JFrame {
     private Quiz quiz;
 
     //EFFECT: Sets up frame where the quiz menu will be displayed
-    public FrameDesign() {
+    public QuizGUI() {
         super("QuizGame Question Menu");
         setQuestionTable();
         setLoadQuizButton();
@@ -161,7 +159,7 @@ public class FrameDesign extends JFrame {
 
 
     public static void main(String[] args) {
-        FrameDesign frame = new FrameDesign();
+        QuizGUI frame = new QuizGUI();
         frame.setContentPane(frame.mainPanel);
         frame.setTitle("Quiz Game");
         frame.setSize(1000, 600);
