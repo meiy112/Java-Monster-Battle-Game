@@ -34,9 +34,19 @@ public class FrameDesign extends JFrame {
     public FrameDesign() {
         super("Quiz Game");
         setQuestionTable();
+        setLoadQuizButton();
+        setSaveQuizButton();
+        setAddQuestionButton();
+        setDeleteQuestionButton();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+    }
 
+    public void setQuestionTable() {
+        questions.setModel(new DefaultTableModel(null, new String[]{"#", "Prompt", "Answer"}));
+    }
+
+    public void setLoadQuizButton() {
         loadQuizButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,8 +68,9 @@ public class FrameDesign extends JFrame {
                 }
             }
         });
+    }
 
-
+    public void setSaveQuizButton() {
         saveQuizButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,8 +96,9 @@ public class FrameDesign extends JFrame {
                 }
             }
         });
+    }
 
-
+    public void setAddQuestionButton() {
         addQuestionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,8 +132,9 @@ public class FrameDesign extends JFrame {
                 questionTable.addRow(new Object[]{questionTable.getRowCount() + 1, prompt, answer});
             }
         });
+    }
 
-
+    public void setDeleteQuestionButton() {
         deleteQuestionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -139,9 +152,6 @@ public class FrameDesign extends JFrame {
         });
     }
 
-    public void setQuestionTable() {
-        questions.setModel(new DefaultTableModel(null, new String[]{"#", "Prompt", "Answer"}));
-    }
 
     public static void main(String[] args) {
         FrameDesign frame = new FrameDesign();
