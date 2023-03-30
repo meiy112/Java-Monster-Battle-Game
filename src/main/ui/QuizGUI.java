@@ -26,6 +26,7 @@ public class QuizGUI extends JFrame {
     private JTable questions;
     private JScrollPane questionPane;
     private JLabel questionsLabel;
+    private JButton startGameButton;
 
     private static JsonReader jsonReader;
     static JsonWriter jsonWriter;
@@ -45,6 +46,12 @@ public class QuizGUI extends JFrame {
         this.quiz = new Quiz();
         ImageIcon icon = new ImageIcon("src/main/ui/FrameIcon.png");
         setIconImage(icon.getImage());
+        startGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "This user story has not been implemented.");
+            }
+        });
     }
 
     //EFFECT: Sets up table where questions will be displayed
