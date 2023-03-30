@@ -28,6 +28,7 @@ if I so choose.
 - As a user, I want to be able to have the option to load my saved quiz state from the menu.
 
 # Instructions for Grader
+Run the GUI in the class QuizGUI.
 - You can generate the first required action related to adding Xs to a Y by clicking on the "add question" button. A
 pop-up will appear that prompts the user to enter a prompt and answer for the question. The question will then be added
 to the quiz's list of questions. 

@@ -64,7 +64,7 @@ public class QuizGUI extends JFrame {
 
                     JOptionPane.showMessageDialog(null, "Loaded quiz from" + JSON_STORE);
                 } catch (IOException ex) {
-                    System.out.println("Unable to read from file: " + JSON_STORE);
+                    JOptionPane.showMessageDialog(null, "Unable to read from file: " + JSON_STORE);
                 }
             }
         });
@@ -83,7 +83,7 @@ public class QuizGUI extends JFrame {
                     jsonWriter.close();
                     JOptionPane.showMessageDialog(null, "Saved quiz to" + JSON_STORE);
                 } catch (FileNotFoundException ex) {
-                    System.out.println("Unable to write to file: " + JSON_STORE);
+                    JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE);
                 }
             }
         });
@@ -98,28 +98,6 @@ public class QuizGUI extends JFrame {
                 String prompt = JOptionPane.showInputDialog("Enter Prompt");
                 String answer = JOptionPane.showInputDialog("Enter Answer");
 
-//                ImageIcon p = new ImageIcon("./data/p.jpg");
-//                Image scaledImage = p.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH);
-//                ImageIcon scaledP = new ImageIcon(scaledImage);
-//
-//                JPanel promptPanel = new JPanel(new BorderLayout());
-//                promptPanel.add(new JLabel("Enter Prompt:"), BorderLayout.NORTH);
-//                promptPanel.add(new JLabel(scaledP), BorderLayout.WEST);
-//
-//                String prompt = JOptionPane.showInputDialog(null, promptPanel, "Prompt",
-//                        JOptionPane.PLAIN_MESSAGE);
-//
-//
-//                ImageIcon a = new ImageIcon("./data/a.jpg");
-//                Image scaledImage2 = a.getImage().getScaledInstance(100, 70, Image.SCALE_SMOOTH);
-//                ImageIcon scaledA = new ImageIcon(scaledImage2);
-//
-//                JPanel answerPanel = new JPanel(new BorderLayout());
-//                answerPanel.add(new JLabel("Enter Answer:"), BorderLayout.NORTH);
-//                answerPanel.add(new JLabel(scaledA), BorderLayout.WEST);
-//
-//                String answer = JOptionPane.showInputDialog(null, answerPanel, "Answer",
-//                        JOptionPane.PLAIN_MESSAGE);
 
                 if (prompt != null && answer != null) {
                     Question question = new Question();
@@ -161,10 +139,19 @@ public class QuizGUI extends JFrame {
     public static void main(String[] args) {
         QuizGUI frame = new QuizGUI();
         frame.setContentPane(frame.mainPanel);
-        frame.setTitle("Quiz Game");
+        frame.setTitle("Quiz Menu");
         frame.setSize(1000, 600);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+
+
+
+
+
+
+
+
 
 }
