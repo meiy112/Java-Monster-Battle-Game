@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 // represents monster that the player fights having hp, size, and a dialogue
-public abstract class Enemy {
+public class Enemy {
     protected int hp;
     protected String dialogue;
     protected int exp;
 
     // CONSTRAINT: 0 < size < 4
     // EFFECT: creates monster with given size and assigns dialogue and hp depending on size
-    public Enemy() {
+    public Enemy(int hp, String dialogue, int exp) {
+        this.hp = hp;
+        this.dialogue = dialogue;
+        this.exp = exp;
     }
 
     // getters

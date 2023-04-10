@@ -13,7 +13,7 @@ import java.util.*;
 public class QuizGame {
 
     static final String JSON_STORE = "./data/myFile.json";
-    private static final int NUM_ENEMIES_TO_GEN = 13;
+    private static final int NUM_ENEMIES_TO_GEN = 9;
     private static Quiz quiz;
     private static JsonReader jsonReader;
     static JsonWriter jsonWriter;
@@ -239,25 +239,37 @@ public class QuizGame {
     public static Enemy generateEnemy(int i) {
         Enemy enemy = null;
         if (i == 0) {
-            enemy = new Almond();
+            enemy = new Enemy(1,
+                    "An almond appeared! She's a computer science major from a faraway land.", 1);
         } else if (i == 1) {
-            enemy = new Assassin();
+            enemy = new Enemy(2,
+                    "An assassin swiftly appeared, you never saw them coming!", 2);
         } else if (i == 2) {
-            enemy = new GrimReaper();
+            enemy = new Enemy(3,
+                    "The grim reaper appeared, they look very strong!", 3);
         } else if (i == 3) {
-            enemy = new MagicUser();
+            enemy = new Enemy(3,
+                    "A magic user appeared, they look very strong!", 3);
         } else if (i == 4) {
-            enemy = new MustardBottle();
+            enemy = new Enemy(1,
+                    "A mustard bottle appeared! She sent a weather balloon down to earth and framed China.",
+                    1);
         } else if (i == 5) {
-            enemy = new Pirate();
+            enemy = new Enemy(2,
+                    "A pokemon appeared! Who's that pokemon?!",
+                    2);
         } else if (i == 6) {
-            enemy = new Pokemon();
+            enemy = new Enemy(1,
+                    "A raccoon appeared! He wants to colonize your land with his cousins.",
+                    1);
         } else if (i == 7) {
-            enemy = new Raccoon();
+            enemy = new Enemy(1,
+                    "A student appeared! They look tired... as usual.",
+                    1);
         } else if (i == 8) {
-            enemy = new Student();
-        } else if (i == 9) {
-            enemy = new Link();
+            enemy = new Enemy(2,
+                    "Zelda appeared! ... Or is it Link?",
+                    2);
         }
         return enemy;
     }

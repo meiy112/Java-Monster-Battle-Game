@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
+//Quiz UI
 public class QuizGUI extends JFrame {
 
     static final String JSON_STORE = "./data/myFile.json";
@@ -27,11 +27,12 @@ public class QuizGUI extends JFrame {
     private JScrollPane questionPane;
     private JLabel questionsLabel;
     private JButton startGameButton;
+    private JButton exitButton;
 
     private static JsonReader jsonReader;
     static JsonWriter jsonWriter;
 
-    private Quiz quiz;
+    private static Quiz quiz;
 
     //EFFECT: Sets up frame where the quiz menu will be displayed
     public QuizGUI() {
@@ -50,6 +51,13 @@ public class QuizGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "This user story has not been implemented.");
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quiz.printLog();
+                System.exit(0);
             }
         });
     }
@@ -110,7 +118,7 @@ public class QuizGUI extends JFrame {
                     Question question = new Question();
                     question.setPrompt(prompt);
                     question.setAnswer(answer);
-                    quiz.getQuestions().add(question);
+                    quiz.addQuestion(question);
                     displayQuestions();
                 }
             }
@@ -125,7 +133,7 @@ public class QuizGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int num = Integer.parseInt(JOptionPane.showInputDialog("Enter the # of the question to be removed"));
 
-                quiz.getQuestions().remove(num - 1);
+                quiz.removeQuestion(num - 1);
 
                 displayQuestions();
             }
@@ -149,16 +157,5 @@ public class QuizGUI extends JFrame {
         frame.setTitle("Quiz Menu");
         frame.setSize(1000, 600);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
-
-
-
-
-
-
-
-
 }
