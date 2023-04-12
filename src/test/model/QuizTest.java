@@ -16,9 +16,9 @@ public class QuizTest {
     @BeforeEach
     void runBefore() {
         quiz = new Quiz();
-        smallEnemy = new Almond();
-        mediumEnemy = new Assassin();
-        largeEnemy = new MagicUser();
+        smallEnemy = new Enemy(1, "hi", 1);
+        mediumEnemy = new Enemy(2, "hello", 2);
+        largeEnemy = new Enemy(3, "sup", 3);
         question1 = new Question();
     }
 
