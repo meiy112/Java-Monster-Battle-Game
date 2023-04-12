@@ -13,7 +13,7 @@ import java.util.*;
 public class QuizGame {
 
     static final String JSON_STORE = "./data/myFile.json";
-    private static final int NUM_ENEMIES_TO_GEN = 9;
+    private static final int NUM_ENEMIES_TO_GEN = 5;
     private static Quiz quiz;
     private static JsonReader jsonReader;
     static JsonWriter jsonWriter;
@@ -257,18 +257,6 @@ public class QuizGame {
         } else if (i == 5) {
             enemy = new Enemy(2,
                     "A pokemon appeared! Who's that pokemon?!",
-                    2);
-        } else if (i == 6) {
-            enemy = new Enemy(1,
-                    "A raccoon appeared! He wants to colonize your land with his cousins.",
-                    1);
-        } else if (i == 7) {
-            enemy = new Enemy(1,
-                    "A student appeared! They look tired... as usual.",
-                    1);
-        } else if (i == 8) {
-            enemy = new Enemy(2,
-                    "Zelda appeared! ... Or is it Link?",
                     2);
         }
         return enemy;

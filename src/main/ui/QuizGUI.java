@@ -42,6 +42,7 @@ public class QuizGUI extends JFrame {
         setSaveQuizButton();
         setAddQuestionButton();
         setDeleteQuestionButton();
+        setExitButton();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         this.quiz = new Quiz();
@@ -53,6 +54,14 @@ public class QuizGUI extends JFrame {
                 JOptionPane.showMessageDialog(null, "This user story has not been implemented.");
             }
         });
+    }
+
+    //EFFECT: Sets up table where questions will be displayed
+    public void setQuestionTable() {
+        questions.setModel(new DefaultTableModel(null, new String[]{"#", "Prompt", "Answer"}));
+    }
+
+    public void setExitButton() {
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,11 +69,6 @@ public class QuizGUI extends JFrame {
                 System.exit(0);
             }
         });
-    }
-
-    //EFFECT: Sets up table where questions will be displayed
-    public void setQuestionTable() {
-        questions.setModel(new DefaultTableModel(null, new String[]{"#", "Prompt", "Answer"}));
     }
 
     //MODIFIES: quiz

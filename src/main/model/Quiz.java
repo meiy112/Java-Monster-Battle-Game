@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -89,15 +90,15 @@ public class Quiz implements Writable {
     //EFFECT: adds question to list of questions
     public void addQuestion(Question question) {
         questions.add(question);
-        EventLog.getInstance().logEvent(new Event("Added new question to quiz with prompt: '" +
-                question.getPrompt() + "'" + " and answer: '" + question.getAnswer() + "'."));
+        EventLog.getInstance().logEvent(new Event("Added new question to quiz with prompt: '"
+                + question.getPrompt() + "'" + " and answer: '" + question.getAnswer() + "'."));
     }
 
     public void removeQuestion(int index) {
         Question question = this.questions.get(index);
         questions.remove(index);
-        EventLog.getInstance().logEvent(new Event("Removed question from quiz with prompt: '" +
-                question.getPrompt() + "'" + " and answer: '" + question.getAnswer() + "'."));
+        EventLog.getInstance().logEvent(new Event("Removed question from quiz with prompt: '"
+                + question.getPrompt() + "'" + " and answer: '" + question.getAnswer() + "'."));
     }
 
     //CONSTRAINT: monster must have hp <= 0
@@ -128,7 +129,8 @@ public class Quiz implements Writable {
     }
 
     public void printLog() {
-        for(Event e: EventLog.getInstance().getEvents()) {
+        for (Iterator<Event> it = EventLog.getInstance().iterator(); it.hasNext(); ) {
+            Event e = it.next();
             System.out.println(e.toString());
         }
     }
