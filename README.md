@@ -46,13 +46,22 @@ JsonReaderTest, JsonWriterTest, and JsonTest methods.
 
 # Phase 4: Task 2
 The events that are logged consist of adding and removing questions. 
+
 Sample events:
+
 Tue Apr 11 21:55:14 PDT 2023
+
 Added new question to quiz with prompt: 'what is 1 + 1' and answer: '2'.
+
 Tue Apr 11 21:55:21 PDT 2023
+
 Added new question to quiz with prompt: 'what is 2 + 2' and answer: '5'.
+
 Tue Apr 11 21:55:24 PDT 2023
+
 Removed question from quiz with prompt: 'what is 2 + 2' and answer: '5'.
+
 Tue Apr 11 21:55:31 PDT 2023
+
 Added new question to quiz with prompt: 'what is 2 + 2' and answer: '4'.
 

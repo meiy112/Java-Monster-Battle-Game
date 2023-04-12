@@ -34,19 +34,27 @@ public class QuizTest {
     }
 
     @Test
-    void testAddOneQuestion() {
+    void testAddRemoveOneQuestion() {
         assertEquals(0, quiz.getQuestions().size());
         quiz.addQuestion(question1);
         assertEquals(1, quiz.getQuestions().size());
+
+        quiz.removeQuestion(0);
+        assertEquals(0, quiz.getQuestions().size());
     }
 
     @Test
-    void testAddMultipleQuestions() {
+    void testAddRemoveMultipleQuestions() {
         assertEquals(0, quiz.getQuestions().size());
         quiz.addQuestion(question1);
         quiz.addQuestion(question1);
         quiz.addQuestion(question1);
         assertEquals(3, quiz.getQuestions().size());
+
+        quiz.removeQuestion(2);
+        quiz.removeQuestion(1);
+        quiz.removeQuestion(0);
+        assertEquals(0, quiz.getQuestions().size());
     }
 
 

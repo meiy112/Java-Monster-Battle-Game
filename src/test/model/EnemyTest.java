@@ -17,14 +17,13 @@ public class EnemyTest {
         smallEnemy = new Enemy(1, "hi", 1);
         mediumEnemy = new Enemy(2, "hello", 2);
         largeEnemy = new Enemy(3, "sup", 3);
-        nullEnemy = null;
     }
 
     @Test
     void testConstructor() {
-        assertEquals(0, nullEnemy.getEnemyHp());
-        assertEquals(0, nullEnemy.getEnemyExp());
-        assertNull(nullEnemy.getEnemyDialogue());
+        assertEquals(1, smallEnemy.getEnemyHp());
+        assertEquals(1, smallEnemy.getEnemyExp());
+        assertEquals("hi", smallEnemy.getEnemyDialogue());
     }
 
     @Test
@@ -44,5 +43,12 @@ public class EnemyTest {
         largeEnemy.attackEnemy();
         largeEnemy.attackEnemy();
         assertEquals(1, largeEnemy.getEnemyHp());
+    }
+
+    @Test
+    void testGetEnemyDialogue() {
+        assertEquals("hi", smallEnemy.getEnemyDialogue());
+        assertEquals("hello", mediumEnemy.getEnemyDialogue());
+        assertEquals("sup", largeEnemy.getEnemyDialogue());
     }
 }
