@@ -154,12 +154,19 @@ public class QuizGUI extends JFrame {
         }
     }
 
-
     public static void main(String[] args) {
         QuizGUI frame = new QuizGUI();
         frame.setContentPane(frame.mainPanel);
         frame.setTitle("Quiz Menu");
         frame.setSize(1000, 600);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                quiz.printLog();
+                System.exit(0);
+            }
+        });
     }
 }
