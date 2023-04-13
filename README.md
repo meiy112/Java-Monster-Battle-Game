@@ -71,6 +71,6 @@ One way to refactor my code is to create an association between the Enemy class 
 The Enemy class is isolated in my UML diagram, which makes it seem as if it is not relevant to any of the other classes. 
 Since the QuizGame and QuizGUI classes have methods that randomly generate enemies of the Enemy class, I could make
 these two classes have a list of Enemies that the randomly generated enemies get added into, or I could make it have
-a single enemy that represents the current enemy that is battling with the player. This would make it more clear that 
+a single Enemy that represents the current enemy that is battling with the player. This would make it more clear that 
 the QuizGame and QuizGUI include instances of the Enemy class, and that the Enemy class being removed would create an
 error in those classes.
